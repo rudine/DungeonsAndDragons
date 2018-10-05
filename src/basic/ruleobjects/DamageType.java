@@ -1,0 +1,5 @@
+package basic.ruleobjects;
+
+public enum DamageType {
+	MAGIC, ACID, BLUDGEONING, COLD, FIRE, FORCE, LIGHTNING, NECROTIC, PIERCING, POISON, PSYCHIC, RADIANT, SLASHING, THUNDER;
+}
