@@ -8,7 +8,6 @@ import gui.components.EnemyPane;
 import javafx.scene.text.Text;
 
 public class ChimeraPane extends EnemyPane<Chimera> {
-
 	public ChimeraPane(Chimera enemy) {
 		super(enemy);
 	}
