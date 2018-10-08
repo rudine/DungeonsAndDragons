@@ -13,7 +13,7 @@ logs
 dependency-reduced-pom.xml
 Thumbs.db
 .thumbcache
-rebel.xml
+src/rebel.xml
 .idea/
 *.iml
 *.tern-project
