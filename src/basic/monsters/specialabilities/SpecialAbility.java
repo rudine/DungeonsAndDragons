@@ -3,6 +3,7 @@ package basic.monsters.specialabilities;
 public enum SpecialAbility {
 	
 	Brave("Brave", "Has advantage on saving throws against being frightened."),
+	FalseAppearance("False appearance", "While the enemy remains motionless, it is indistinguishable from an inanimate statue."),
 	FearOfFire("Fear of fire", "If the enemy takes fire damage, it has disadvantage on attack rolls and ability checks until the end of its next turn"),
 	KeenSmell("Keen Smell", "Has advantage on Wisdom (Perception) checks that rely on smell."),
 	PackTactics("Pack Tactics", "Has advantage on an attack roll against a creature if at least one of the lion’s allies is within 5 feet of the creature and the ally isn’t incapacitated."),
