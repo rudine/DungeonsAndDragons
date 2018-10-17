@@ -2,6 +2,8 @@ package basic.monsters;
 
 import basic.attacktypes.MeleeAttack;
 import basic.attacktypes.MeleeAttackBuilder;
+import basic.attacktypes.SpecialAttack;
+import basic.attacktypes.SpecialAttackBuilder;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.DamageType;
@@ -15,9 +17,8 @@ public class NightMare extends AbstractEnemy {
 		setAbilityScores(new AbilityScores(18, 15, 16, 10, 13, 15));
 		setAttacksOnAttackAction(1);
 		setAttacks();
-		// special abiltiy confer fire resistance
-		// special ability illumination
-		// special action (attack) Etherial Stride
+		addToSpecialAbilities(SpecialAbility.ConferFireResistance, SpecialAbility.Illumination);
+		// special action Etherial Stride <-- add to Enemy and create special actions verwerk in gui
 	}
 
 	private void setAttacks() {
@@ -32,11 +33,11 @@ public class NightMare extends AbstractEnemy {
 		addToAvailableAttacks(hooves);
 	}
 	
+	
 	@Override
 	public void doDamage(int damage, DamageType type) {
 		if(type == DamageType.FIRE)
 			damage = 0;
 		super.doDamage(damage, type);
 	}
-	
 }
