@@ -3,10 +3,11 @@ package basic.monsters;
 import static basic.services.DamageService.subtractDoubleDamageFromHitpoints;
 import static basic.services.DiceService.throwD8;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
-import basic.attacktypes.RangedAttack;
-import basic.attacktypes.RangedAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.RangedAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
+import basic.attack.types.builders.RangedAttackBuilder;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.Alignment;
 import basic.ruleobjects.DamageType;
@@ -31,23 +32,14 @@ public class Skeleton extends AbstractEnemy {
 	private void setAttacks() {
 		MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
 		MeleeAttack shortsword = meleeBuilder.setWeaponName("Shortsword") //
-				.setBaseDamage(2)//
-				.setDamageDie(6)//
-				.setTimesToThrowDamageDie(1)//
 				.setToHit(5)//
-				.setReach(5)//
-				.setNumberOfTargets(1)
-				.setDamageType(DamageType.PIERCING)//
+				.addDamageComponent(new DamageComponent(1, 6, 2, DamageType.PIERCING))//
 				.build();
 		RangedAttackBuilder rangedBuilder = new RangedAttackBuilder();
 		RangedAttack shortbow = rangedBuilder.setWeaponName("Shortbow") //
-				.setBaseDamage(2)//
-				.setDamageDie(6)//
-				.setTimesToThrowDamageDie(1)//
 				.setToHit(5)//
+				.addDamageComponent(new DamageComponent(1, 6, 2, DamageType.PIERCING))//
 				.setRange("80/320 ft.")//
-				.setNumberOfTargets(1)
-				.setDamageType(DamageType.PIERCING)//
 				.build();
 		addToAvailableAttacks(shortbow, shortsword);
 	}

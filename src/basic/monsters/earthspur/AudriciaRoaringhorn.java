@@ -1,9 +1,10 @@
 package basic.monsters.earthspur;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
-import basic.attacktypes.RangedAttack;
-import basic.attacktypes.RangedAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.RangedAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
+import basic.attack.types.builders.RangedAttackBuilder;
 import basic.monsters.PreparesForNextTurn;
 import basic.monsters.Thug;
 import basic.ruleobjects.DamageType;
@@ -19,21 +20,15 @@ public class AudriciaRoaringhorn extends Thug implements PreparesForNextTurn{
 	protected void setAttacks() {
 		MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
 		MeleeAttack rapier = meleeBuilder.setWeaponName("Rapier") //
-					.setBaseDamage(2)
-					.setToHit(4)//
-					.setDamageDie(8)//
-					.setTimesToThrowDamageDie(1)//
-					.setDamageType(DamageType.PIERCING)//
-					.build();
+				.addDamageComponent(new DamageComponent(1, 8, 2, DamageType.PIERCING))//	
+				.setToHit(4)//
+				.build();
 		addToAvailableAttacks(rapier);
 		RangedAttackBuilder rangedBuilder = new RangedAttackBuilder();
 		RangedAttack shortbow = rangedBuilder.setWeaponName("Shortbow")//
-				.setBaseDamage(0)//
+				.addDamageComponent(new DamageComponent(1, 6, 0, DamageType.PIERCING))//
 				.setRange("80/320")//
-				.setToHit(2)
-				.setDamageDie(6)//
-				.setTimesToThrowDamageDie(1)//
-				.setDamageType(DamageType.PIERCING)//
+				.setToHit(2)//
 				.build();
 		addToAvailableAttacks(shortbow);
 	}

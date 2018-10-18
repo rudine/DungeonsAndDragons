@@ -2,7 +2,7 @@ package gui.components.enemyspecific;
 
 import java.util.List;
 
-import basic.attacktypes.Attack;
+import basic.attack.Attack;
 import basic.monsters.Chimera;
 import gui.components.EnemyPane;
 import javafx.scene.text.Text;

@@ -1,7 +1,8 @@
 package basic.monsters;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.DamageType;
@@ -23,20 +24,14 @@ public class GiantBadger extends AbstractEnemy {
 	private void setAttacks() {
 		MeleeAttack bite = new MeleeAttackBuilder()//
 				.setWeaponName("Bite")//
-				.setBaseDamage(1)//
 				.setToHit(3)//
-				.setDamageDie(6)//
-				.setTimesToThrowDamageDie(1)//
-				.setDamageType(DamageType.PIERCING)//
+				.addDamageComponent(new DamageComponent(1, 6, 1, DamageType.PIERCING))//
 				.build();
 		addToAvailableAttacks(bite);
 		MeleeAttack claws = new MeleeAttackBuilder()//
 				.setWeaponName("Claws")//
-				.setBaseDamage(1)//
 				.setToHit(3)//
-				.setDamageDie(4)//
-				.setTimesToThrowDamageDie(2)//
-				.setDamageType(DamageType.SLASHING)//
+				.addDamageComponent(new DamageComponent(2, 4, 1, DamageType.SLASHING))//
 				.build();
 		addToAvailableAttacks(claws);
 	}

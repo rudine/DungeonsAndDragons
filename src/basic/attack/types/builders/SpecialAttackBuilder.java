@@ -1,6 +1,7 @@
-package basic.attacktypes;
+package basic.attack.types.builders;
 
-import basic.ruleobjects.DamageType;
+import basic.attack.DamageComponent;
+import basic.attack.types.SpecialAttack;
 import basic.ruleobjects.Range;
 import basic.ruleobjects.SavingThrow;
 
@@ -27,28 +28,13 @@ public class SpecialAttackBuilder {
 		return this;
 	}
 	
-	public SpecialAttackBuilder setDamageDie(int damageDie) {
-		attack.setDamageDie(damageDie);
-		return this;
-	}
-	
-	public SpecialAttackBuilder setTimesToThrowDamageDie(int timesToThrowDamageDie) {
-		attack.setTimesToThrowDamageDie(timesToThrowDamageDie);
-		return this;
-	}
-	
-	public SpecialAttackBuilder setBaseDamage(int baseDamage) {
-		attack.setBaseDamage(baseDamage);
+	public SpecialAttackBuilder addDamageComponent(DamageComponent component) {
+		attack.addToComponents(component);
 		return this;
 	}
 	
 	public SpecialAttackBuilder setWeaponName(String weaponName) {
 		attack.setWeaponName(weaponName);
-		return this;
-	}
-	
-	public SpecialAttackBuilder setDamageType(DamageType type) {
-		attack.setType(type);
 		return this;
 	}
 	

@@ -1,9 +1,10 @@
 package basic.monsters;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
-import basic.attacktypes.RangedAttack;
-import basic.attacktypes.RangedAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.RangedAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
+import basic.attack.types.builders.RangedAttackBuilder;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.DamageType;
 import basic.services.DiceService;
@@ -28,11 +29,8 @@ public class Bandit extends AbstractEnemy {
 	private void addScimitarAttack(int dexModifier) {
 		MeleeAttack attack = new MeleeAttackBuilder()//
 				.setWeaponName("Scimitar")//
-				.setBaseDamage(dexModifier)//
 				.setToHit(3)//
-				.setDamageDie(6)//
-				.setTimesToThrowDamageDie(1)//
-				.setDamageType(DamageType.SLASHING)//
+				.addDamageComponent(new DamageComponent(1, 6, dexModifier, DamageType.SLASHING)) //
 				.build();
 		addToAvailableAttacks(attack);
 	}
@@ -40,12 +38,9 @@ public class Bandit extends AbstractEnemy {
 	private void addLightCrossbowAttack(int dexModifier) {
 		RangedAttackBuilder builder = new RangedAttackBuilder();
 		RangedAttack attack = builder.setWeaponName("Light crossbow")//
-				.setBaseDamage(1)//
 				.setToHit(3)//
-				.setDamageDie(8)//
-				.setTimesToThrowDamageDie(1)//
+				.addDamageComponent(new DamageComponent(1, 8, 1, DamageType.PIERCING)) //
 				.setRange("80/320 ft.")//
-				.setDamageType(DamageType.PIERCING)//
 				.build();
 		addToAvailableAttacks(attack);
 	}

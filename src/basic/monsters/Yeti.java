@@ -4,10 +4,11 @@ import static basic.monsters.specialabilities.SpecialAbility.FearOfFire;
 import static basic.monsters.specialabilities.SpecialAbility.KeenSmell;
 import static basic.monsters.specialabilities.SpecialAbility.SnowCamouflage;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
-import basic.attacktypes.SpecialAttack;
-import basic.attacktypes.SpecialAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.SpecialAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
+import basic.attack.types.builders.SpecialAttackBuilder;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.AbilityTypes;
 import basic.ruleobjects.Alignment;
@@ -28,7 +29,8 @@ public class Yeti extends AbstractEnemy {
 		setSpeed("40 ft. 8 vakjes. Climb 40 ft. 8 vakjes");
 		setAbilityScores(new AbilityScores(18, 13, 16, 8, 12, 7));
 		addToSkills(new SkillModifier(3, Skill.Perception, AbilityTypes.WIS));
-		//TODO fear of fire naar vunerabilities
+		//TODO vunarabilities should be a seperate type of ability of the enemy
+		// move Fear of fire over to vunerabilities
 		addToSpecialAbilities(KeenSmell, FearOfFire, SnowCamouflage);
 		setAttacks();
 		setAttacksOnAttackAction(2);
@@ -42,11 +44,8 @@ public class Yeti extends AbstractEnemy {
 	private void setAttacks() {
 		MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
 		MeleeAttack claw = meleeBuilder.setWeaponName("Claw")//
-				.setBaseDamage(4)// alleen slashing damage type
-				.setDamageDie(6)//
-				.setTimesToThrowDamageDie(2)//
-				.setDamageType(DamageType.SLASHING)//FIXME ook damagetype cold, dat is 1 van de twee dmgs
-				.setDescription("including 3 COLD dmg")//
+				.addDamageComponent(new DamageComponent(2, 6, 4, DamageType.SLASHING))//
+				.addDamageComponent(new DamageComponent(1, 6, 0, DamageType.COLD))//
 				.build();
 		addToAvailableAttacks(claw);
 	}
@@ -54,10 +53,7 @@ public class Yeti extends AbstractEnemy {
 	private void setSpecialAttacks() {
 		SpecialAttackBuilder AOEBuilder = new SpecialAttackBuilder();
 		SpecialAttack chillingGaze = AOEBuilder.setAreaOfEffect("target in sight")//
-				.setBaseDamage(0)//
-				.setDamageDie(6)//
-				.setTimesToThrowDamageDie(3)//
-				.setDamageType(DamageType.COLD)//
+				.addDamageComponent(new DamageComponent(3, 6, 0, DamageType.COLD))//
 				.setSavingThrow(new SavingThrow(13, AbilityTypes.CON))//
 				.setHalfDamageWhenSaved(true)//
 				.setWeaponName("Chilling Gaze")//

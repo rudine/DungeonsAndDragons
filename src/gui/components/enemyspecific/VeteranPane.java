@@ -3,7 +3,7 @@ package gui.components.enemyspecific;
 import java.util.List;
 import java.util.Optional;
 
-import basic.attacktypes.Attack;
+import basic.attack.Attack;
 import basic.monsters.Veteran;
 import gui.components.EnemyPane;
 import javafx.scene.text.Text;

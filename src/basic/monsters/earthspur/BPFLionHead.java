@@ -6,8 +6,9 @@ import static basic.ruleobjects.AbilityTypes.STR;
 import static basic.ruleobjects.Skill.Athletics;
 import static basic.ruleobjects.Skill.Intimidation;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.monsters.AbstractEnemy;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.AbilityScores;
@@ -34,11 +35,8 @@ public class BPFLionHead extends AbstractEnemy {
 	private void setAttacks() {
 		MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
 		MeleeAttack clawedGauntlet = meleeBuilder.setWeaponName("Clawed Gauntlet") //
-					.setBaseDamage(3)
 					.setToHit(5)//
-					.setDamageDie(4)//
-					.setTimesToThrowDamageDie(1)//
-					.setDamageType(DamageType.SLASHING)//
+					.addDamageComponent(new DamageComponent(1, 4, 3, DamageType.SLASHING))//
 					.build();
 		addToAvailableAttacks(clawedGauntlet);
 	}

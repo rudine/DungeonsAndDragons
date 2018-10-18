@@ -5,10 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-import basic.attacktypes.Attack;
-import basic.attacktypes.SpecialAttack;
 import basic.ruleobjects.modifiers.SaveModifier;
 import basic.ruleobjects.modifiers.SkillModifier;
+import basic.attack.Attack;
+import basic.attack.types.SpecialAttack;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.Alignment;

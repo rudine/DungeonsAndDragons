@@ -1,9 +1,10 @@
 package basic.monsters;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
-import basic.attacktypes.SpecialAttack;
-import basic.attacktypes.SpecialAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.SpecialAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
+import basic.attack.types.builders.SpecialAttackBuilder;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.AbilityTypes;
 import basic.ruleobjects.DamageType;
@@ -27,12 +28,10 @@ public class Ankheg extends AbstractEnemy implements PreparesForNextTurn{
 	private void setAttacks() {
 		MeleeAttackBuilder biteBuilder = new MeleeAttackBuilder();
 		MeleeAttack bite = biteBuilder.setWeaponName("Bite") //
-					.setBaseDamage(3)
 					.setToHit(5)//
-					.setDamageDie(6)//
-					.setTimesToThrowDamageDie(3)//
-					.setDamageType(DamageType.PIERCING)//
-					.setDescription("Including acid dmg. If the target is a Large or smaller cr., it is grappled (escape DC13) until grapple ends ankheg can bite only the grappled creature and has adv on attack rolls to do so")//
+					.addDamageComponent(new DamageComponent(2, 6, 3, DamageType.SLASHING))//
+					.addDamageComponent(new DamageComponent(1, 6, 0, DamageType.ACID))//
+					.setDescription("If the target is a Large or smaller cr., it is grappled (escape DC13) until grapple ends ankheg can bite only the grappled creature and has adv on attack rolls to do so")//
 					.build();
 		addToAvailableAttacks(bite);
 	}
@@ -40,10 +39,7 @@ public class Ankheg extends AbstractEnemy implements PreparesForNextTurn{
 	private void setSpecialAttacks() {
 		SpecialAttackBuilder AOEBuilder = new SpecialAttackBuilder();
 		SpecialAttack acidSpray = AOEBuilder.setAreaOfEffect("30 ft long line, 5ft. wide")//
-				.setBaseDamage(0)//
-				.setDamageDie(6)//
-				.setTimesToThrowDamageDie(3)//
-				.setDamageType(DamageType.ACID)//
+				.addDamageComponent(new DamageComponent(3, 6, 0, DamageType.ACID))//
 				.setSavingThrow(new SavingThrow(13, AbilityTypes.DEX))//
 				.setHalfDamageWhenSaved(true)//
 				.setWeaponName("Acid spray")//

@@ -1,4 +1,6 @@
-package basic.attacktypes;
+package basic.attack.types;
+
+import basic.attack.Attack;
 
 public class RangedAttack extends Attack {
 

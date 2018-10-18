@@ -6,8 +6,9 @@ import static basic.ruleobjects.AbilityTypes.STR;
 import static basic.ruleobjects.Skill.Athletics;
 import static basic.ruleobjects.Skill.Intimidation;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.monsters.AbstractEnemy;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.AbilityScores;
@@ -33,12 +34,9 @@ public class Bhun extends AbstractEnemy {
 	
 	private void setAttacks() {
 		MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
-		MeleeAttack handAxe = meleeBuilder.setWeaponName("Hand Axe") //
-					.setBaseDamage(4)
+		MeleeAttack handAxe = meleeBuilder.setWeaponName("Flint Hand Axe") //
 					.setToHit(6)//
-					.setDamageDie(6)//
-					.setTimesToThrowDamageDie(1)//
-					.setDamageType(DamageType.SLASHING)//
+					.addDamageComponent(new DamageComponent(1, 6, 4, DamageType.SLASHING))//
 					.build();
 		addToAvailableAttacks(handAxe);
 	}

@@ -3,10 +3,11 @@ package basic.monsters;
 import static basic.ruleobjects.AbilityTypes.CHA;
 import static basic.ruleobjects.Skill.Intimidation;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
-import basic.attacktypes.RangedAttack;
-import basic.attacktypes.RangedAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.RangedAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
+import basic.attack.types.builders.RangedAttackBuilder;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.Alignment;
 import basic.ruleobjects.DamageType;
@@ -35,12 +36,9 @@ public class Thug extends AbstractEnemy {
 	protected void addHeavyCrossbowAttack() {
 		RangedAttackBuilder rangedBuilder = new RangedAttackBuilder();
 		RangedAttack heavyCrossbow = rangedBuilder.setWeaponName("Heavy Crossbow")//
-				.setBaseDamage(0)//
 				.setRange("100/400 ft.")//
 				.setToHit(2)
-				.setDamageDie(10)//
-				.setTimesToThrowDamageDie(1)//
-				.setDamageType(DamageType.PIERCING)//
+				.addDamageComponent(new DamageComponent(1, 10, 0, DamageType.PIERCING))//
 				.build();
 		addToAvailableAttacks(heavyCrossbow);
 	}
@@ -48,11 +46,8 @@ public class Thug extends AbstractEnemy {
 	protected void addMaceAttack() {
 		MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
 		MeleeAttack mace = meleeBuilder.setWeaponName("Mace") //
-					.setBaseDamage(2)
 					.setToHit(4)//
-					.setDamageDie(6)//
-					.setTimesToThrowDamageDie(1)//
-					.setDamageType(DamageType.BLUDGEONING)//
+					.addDamageComponent(new DamageComponent(1, 6, 2, DamageType.BLUDGEONING))//
 					.build();
 		addToAvailableAttacks(mace);
 	}

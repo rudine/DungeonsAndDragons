@@ -1,9 +1,10 @@
 package basic.services;
 
-import basic.attacktypes.Attack;
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.RangedAttack;
-import basic.attacktypes.SpecialAttack;
+import basic.attack.Attack;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.RangedAttack;
+import basic.attack.types.SpecialAttack;
 import gui.components.AttackText;
 
 public class DamageService {
@@ -31,32 +32,43 @@ public class DamageService {
 		textBuilder.append(attack.getWeaponName() + " -- ");
 		textBuilder.append("To hit: " + rollForHit.getResult());
 		textBuilder.append(".  ");
-		textBuilder.append("Damage: " + getAttackDamage(attack.getDamageDie(), attack.getTimesToThrowDamageDie(),
-				attack.getBaseDamage(), rollForHit.isCritical()));
-		textBuilder.append("  ");
-		textBuilder.append(attack.getType().toString());
+		getTextFromDmgComponents(attack, rollForHit.isCritical(), textBuilder);
 		textBuilder.append(".  ");
 		textBuilder.append("Targets: " + attack.getNumberOfTargets());
 		textBuilder.append(".  ");
-		if(attack instanceof MeleeAttack)
-			textBuilder.append("Reach: " + ((MeleeAttack)attack).getReach());
-		if(attack instanceof RangedAttack)
-			textBuilder.append("Range: " + ((RangedAttack)attack).getRange());
-		if(!attack.getDescription().isEmpty())
+		if (attack instanceof MeleeAttack)
+			textBuilder.append("Reach: " + ((MeleeAttack) attack).getReach());
+		if (attack instanceof RangedAttack)
+			textBuilder.append("Range: " + ((RangedAttack) attack).getRange());
+		if (!attack.getDescription().isEmpty())
 			textBuilder.append(". " + attack.getDescription());
 
 		return new AttackText(textBuilder.toString(), rollForHit.isCritical());
 	}
-	
+
+	protected static void getTextFromDmgComponents(Attack attack, boolean critical, StringBuilder textBuilder) {
+		boolean first = true;
+		for (DamageComponent component : attack.getComponents()) {
+			if(first) {
+				first = false;
+				textBuilder.append("Damage: ");
+			}
+			else {
+				textBuilder.append(" plus ");
+			}
+			textBuilder.append(getAttackDamage(component.getDamageDie(), component.getTimesToThrowDie(),
+					component.getBaseDamage(), critical));
+			textBuilder.append("  ");
+			textBuilder.append(component.getType().toString());
+		}
+	}
+
 	public static String getSpecialAttackText(SpecialAttack attack) {
 		StringBuilder textBuilder = new StringBuilder();
 		textBuilder.append(attack.getWeaponName() + " -- ");
 		textBuilder.append(attack.getSave().toString());
 		textBuilder.append(". ");
-		textBuilder.append("Damage: " + getAttackDamage(attack.getDamageDie(), attack.getTimesToThrowDamageDie(),
-				attack.getBaseDamage(), false));
-		textBuilder.append("  ");
-		textBuilder.append(attack.getType().toString());
+		getTextFromDmgComponents(attack, false, textBuilder);
 		textBuilder.append(". Area of Effect: " + attack.getAreaOfEffect());
 		textBuilder.append(". ");
 		String halfOrNoDamage = attack.isHalfDamageWhenSaveMade() ? "Half damage on save." : "No damage on save.";

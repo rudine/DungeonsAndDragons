@@ -6,10 +6,11 @@ import static basic.ruleobjects.AbilityTypes.STR;
 import static basic.ruleobjects.Skill.Athletics;
 import static basic.ruleobjects.Skill.Intimidation;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
-import basic.attacktypes.SpecialAttack;
-import basic.attacktypes.SpecialAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.SpecialAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
+import basic.attack.types.builders.SpecialAttackBuilder;
 import basic.monsters.AbstractEnemy;
 import basic.monsters.PreparesForNextTurn;
 import basic.monsters.specialabilities.SpecialAbility;
@@ -42,12 +43,9 @@ public class BPFDragonHead extends AbstractEnemy implements PreparesForNextTurn{
 	private void setAttacks() {
 		MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
 		MeleeAttack burningMaul = meleeBuilder.setWeaponName("Burning maul") //
-					.setBaseDamage(3 + 3)// FIXME including 3 fire damage
 					.setToHit(5)//
-					.setDamageDie(6)//
-					.setTimesToThrowDamageDie(2)//
-					.setDamageType(DamageType.BLUDGEONING)//
-					.setDescription("including 3 FIRE dmg")//
+					.addDamageComponent(new DamageComponent(2, 6, 3, DamageType.BLUDGEONING))//
+					.addDamageComponent(new DamageComponent(1, 6, 0, DamageType.FIRE))//
 					.build();
 		addToAvailableAttacks(burningMaul);
 	}
@@ -55,10 +53,7 @@ public class BPFDragonHead extends AbstractEnemy implements PreparesForNextTurn{
 	private void setSpecialAttacks() {
 		SpecialAttackBuilder AOEBuilder = new SpecialAttackBuilder();
 		SpecialAttack blowFire = AOEBuilder.setAreaOfEffect("10 foot cone")//
-				.setBaseDamage(0)//
-				.setDamageDie(8)//
-				.setTimesToThrowDamageDie(4)//
-				.setDamageType(DamageType.FIRE)//
+				.addDamageComponent(new DamageComponent(4, 8, 0, DamageType.FIRE))//
 				.setSavingThrow(new SavingThrow(15, AbilityTypes.DEX))//
 				.setHalfDamageWhenSaved(true)//
 				.setWeaponName("Blow Fire")//

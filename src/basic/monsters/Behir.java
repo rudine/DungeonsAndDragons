@@ -1,9 +1,10 @@
 package basic.monsters;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
-import basic.attacktypes.SpecialAttack;
-import basic.attacktypes.SpecialAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.SpecialAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
+import basic.attack.types.builders.SpecialAttackBuilder;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.AbilityTypes;
 import basic.ruleobjects.DamageType;
@@ -31,11 +32,8 @@ public class Behir extends AbstractEnemy implements PreparesForNextTurn {
 	private void setAttacks() {
 		MeleeAttackBuilder biteBuilder = new MeleeAttackBuilder();
 		MeleeAttack bite = biteBuilder.setWeaponName("Bite")//
-				.setBaseDamage(6)//
 				.setToHit(10)//
-				.setDamageDie(10)//
-				.setTimesToThrowDamageDie(3)//
-				.setDamageType(DamageType.PIERCING)//
+				.addDamageComponent(new DamageComponent(3, 10, 6, DamageType.PIERCING))//
 				.setReach(10)//
 				.build();
 		addToAvailableAttacks(bite);
@@ -44,10 +42,7 @@ public class Behir extends AbstractEnemy implements PreparesForNextTurn {
 				.setToHit(10)//
 				.setReach(5)//
 				.setDescription("One large or smaller creature. Half bludgeoning, half slashing. Target is grappled DC16, and restrained on hit")//
-				.setBaseDamage(12)//
-				.setDamageDie(10)//
-				.setTimesToThrowDamageDie(4)//
-				.setDamageType(DamageType.BLUDGEONING)//
+				.addDamageComponent(new DamageComponent(4, 10, 12, DamageType.BLUDGEONING))//
 				.build();
 		addToAvailableAttacks(constrict);
 	}
@@ -56,12 +51,10 @@ public class Behir extends AbstractEnemy implements PreparesForNextTurn {
 		SpecialAttackBuilder lightningBuilder = new SpecialAttackBuilder();
 		SpecialAttack lightning = lightningBuilder.setAreaOfEffect("Line, 20ft long, 5ft wide")//
 				.setSavingThrow(new SavingThrow(16, AbilityTypes.DEX))//
-				.setDamageDie(10)//
-				.setTimesToThrowDamageDie(12)//
-				.setDamageType(DamageType.LIGHTNING)//
+				.addDamageComponent(new DamageComponent(12, 10, 0, DamageType.LIGHTNING))//
 				.setWeaponName("Lightning Breath")//
 				.setHalfDamageWhenSaved(true)//
-				.setDescription(getFireBreathDescription())//
+				.setDescription(getLightningBreathDescription())//
 				.setRecharge(true)//
 				.setAvailable(true)//
 				.setAvailabilityDie(6)//
@@ -71,18 +64,16 @@ public class Behir extends AbstractEnemy implements PreparesForNextTurn {
 		SpecialAttackBuilder swallowBuilder = new SpecialAttackBuilder();
 		SpecialAttack swallow = swallowBuilder.setAreaOfEffect("grappled creature")//
 				.setWeaponName("Swallow")//
-				.setDamageDie(6)//
-				.setTimesToThrowDamageDie(6)//
+				.addDamageComponent(new DamageComponent(6, 6, 0, DamageType.ACID))//
 				.setRecharge(false)//
 				.setAvailable(true)//
 				.setDescription(getSwallowDescription())//
 				.setSavingThrow(new SavingThrow(14, AbilityTypes.CON))//
-				.setDamageType(DamageType.ACID)//
 				.build();
 		addToSpecialAttacks(swallow);
 	}
 	
-	private String getFireBreathDescription() {
+	private String getLightningBreathDescription() {
 		return "The behir exhales a line of " + 
 				"lightning that is 20 feet long and 5 feet wide. Each creature " + 
 				"in that line must make a DC 16 Dexterity saving throw, taking " + 

@@ -1,18 +1,16 @@
-package basic.attacktypes;
+package basic.attack;
 
-import basic.ruleobjects.DamageType;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Attack implements Comparable<Attack>{
 
 	private int toHit;
 	private int numberOfTargets = 1;
-	private int damageDie;
-	private int timesToThrowDamageDie;
-	private int baseDamage = 0;
 	private String weaponName;
-	private DamageType type;
 	private String description = "";
 	private int numberOfUsesOnMultiAttack;
+	private List<DamageComponent> components; 
 
 	public int getToHit() {
 		return toHit;
@@ -30,44 +28,12 @@ public abstract class Attack implements Comparable<Attack>{
 		this.numberOfTargets = numberOfTargets;
 	}
 
-	public int getDamageDie() {
-		return damageDie;
-	}
-
-	public void setDamageDie(int damageDie) {
-		this.damageDie = damageDie;
-	}
-
-	public int getTimesToThrowDamageDie() {
-		return timesToThrowDamageDie;
-	}
-
-	public void setTimesToThrowDamageDie(int timesToThrowDamageDie) {
-		this.timesToThrowDamageDie = timesToThrowDamageDie;
-	}
-
-	public int getBaseDamage() {
-		return baseDamage;
-	}
-
-	public void setBaseDamage(int baseDamage) {
-		this.baseDamage = baseDamage;
-	}
-
 	public String getWeaponName() {
 		return weaponName;
 	}
 
 	public void setWeaponName(String weaponName) {
 		this.weaponName = weaponName;
-	}
-
-	public DamageType getType() {
-		return type;
-	}
-
-	public void setType(DamageType type) {
-		this.type = type;
 	}
 
 	public String getDescription() {
@@ -89,5 +55,16 @@ public abstract class Attack implements Comparable<Attack>{
 	@Override
 	public int compareTo(Attack other) {
 		return this.getWeaponName().compareTo(other.getWeaponName());
+	}
+
+	public List<DamageComponent> getComponents() {
+		return components;
+	}
+
+	public void addToComponents(DamageComponent component) {
+		if(components == null) {
+			components = new ArrayList<>();
+		}
+		components.add(component);
 	}
 }

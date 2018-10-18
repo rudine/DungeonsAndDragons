@@ -3,8 +3,8 @@ package gui.components;
 import java.util.ArrayList;
 import java.util.List;
 
-import basic.attacktypes.Attack;
-import basic.attacktypes.SpecialAttack;
+import basic.attack.Attack;
+import basic.attack.types.SpecialAttack;
 import basic.monsters.AbstractEnemy;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.DamageType;

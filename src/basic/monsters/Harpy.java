@@ -1,9 +1,10 @@
 package basic.monsters;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
-import basic.attacktypes.SpecialAttack;
-import basic.attacktypes.SpecialAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.SpecialAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
+import basic.attack.types.builders.SpecialAttackBuilder;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.AbilityTypes;
 import basic.ruleobjects.DamageType;
@@ -28,38 +29,28 @@ public class Harpy extends AbstractEnemy {
 		MeleeAttackBuilder clawBuilder = new MeleeAttackBuilder();
 		MeleeAttack claw = clawBuilder.setWeaponName("Claw")//
 				.setToHit(3)//
-				.setReach(5)//
-				.setNumberOfTargets(1)//
-				.setBaseDamage(1)//
-				.setDamageDie(4)//
-				.setTimesToThrowDamageDie(2)//
-				.setDamageType(DamageType.SLASHING)//
+				.addDamageComponent(new DamageComponent(2, 4, 1, DamageType.SLASHING))//
 				.build();
 		addToAvailableAttacks(claw);
 		MeleeAttackBuilder clubBuilder = new MeleeAttackBuilder();
 		MeleeAttack club = clubBuilder.setWeaponName("Club")//
 				.setToHit(3)//
-				.setReach(5)//
-				.setNumberOfTargets(1)//
-				.setBaseDamage(1)//
-				.setDamageDie(4)//
-				.setTimesToThrowDamageDie(1)//
-				.setDamageType(DamageType.BLUDGEONING)//
+				.addDamageComponent(new DamageComponent(1, 4, 1, DamageType.BLUDGEONING))//
 				.build();
 		addToAvailableAttacks(club);
 	}
 	
 	private void setSpecialAttacks() {
+		// TODO also not a good fit for a special attack, see if it fits in the same category 
+		// as the special actions
 		SpecialAttackBuilder luresongBuilder = new SpecialAttackBuilder();
 		SpecialAttack luringSong = luresongBuilder.setWeaponName("Luring song")//
 				.setAreaOfEffect("300 feet")//
 				.setSavingThrow(new SavingThrow(11, AbilityTypes.WIS))
-				.setDamageDie(4)//
-				.setTimesToThrowDamageDie(0)//
 				.setRecharge(false)
 				.setAvailable(true)//
 				.setDescription(lookupLuringSongDescription())//
-				.setDamageType(DamageType.MAGIC)//
+				.addDamageComponent(new DamageComponent(0, 4, 0, DamageType.MAGIC))//
 				.build();
 		addToSpecialAttacks(luringSong);
 	}

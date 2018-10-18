@@ -5,10 +5,11 @@ import static basic.ruleobjects.AbilityTypes.WIS;
 import static basic.ruleobjects.Skill.Athletics;
 import static basic.ruleobjects.Skill.Perception;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
-import basic.attacktypes.RangedAttack;
-import basic.attacktypes.RangedAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.RangedAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
+import basic.attack.types.builders.RangedAttackBuilder;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.DamageType;
 import basic.ruleobjects.modifiers.SkillModifier;
@@ -30,41 +31,28 @@ public class Veteran extends AbstractEnemy {
 	protected void setAttacks() {
 		MeleeAttackBuilder ls2hBuilder = new MeleeAttackBuilder();
 		MeleeAttack longsword2Hands = ls2hBuilder.setWeaponName("Longsword 2 Hands") //
-					.setBaseDamage(3)
 					.setToHit(5)//
-					.setDamageDie(10)//
-					.setTimesToThrowDamageDie(1)//
-					.setDamageType(DamageType.SLASHING)//
+					.addDamageComponent(new DamageComponent(1, 10, 3, DamageType.SLASHING))//
 					.build();
 		addToAvailableAttacks(longsword2Hands);
 		MeleeAttackBuilder ls1hBuilder = new MeleeAttackBuilder();
 		MeleeAttack longsword1Hand = ls1hBuilder.setWeaponName("Longsword 1 Hand") //
-					.setBaseDamage(3)
 					.setToHit(5)//
-					.setDamageDie(8)//
-					.setTimesToThrowDamageDie(1)//
-					.setDamageType(DamageType.SLASHING)//
+					.addDamageComponent(new DamageComponent(1, 8, 3, DamageType.SLASHING))//
 					.build();
 		addToAvailableAttacks(longsword1Hand);
 		MeleeAttackBuilder shortswordBuilder = new MeleeAttackBuilder();
 		MeleeAttack shortsword = shortswordBuilder.setWeaponName("Shortsword") //
-					.setBaseDamage(3)
 					.setToHit(5)//
-					.setDamageDie(6)//
-					.setTimesToThrowDamageDie(1)//
-					.setDamageType(DamageType.PIERCING)//
+					.addDamageComponent(new DamageComponent(1, 6, 3, DamageType.PIERCING))//
 					.build();
 		addToAvailableAttacks(shortsword);
 		RangedAttackBuilder rBuilder = new RangedAttackBuilder();
 		RangedAttack heavyCrossbow = rBuilder.setWeaponName("Heavy Crossbow")//
-				.setBaseDamage(0)//
 				.setRange("100/400")//
 				.setToHit(3)
-				.setDamageDie(10)//
-				.setTimesToThrowDamageDie(1)//
-				.setDamageType(DamageType.PIERCING)//
+				.addDamageComponent(new DamageComponent(1, 10, 0, DamageType.PIERCING))//
 				.build();
 		addToAvailableAttacks(heavyCrossbow);
 	}
-
 }

@@ -1,6 +1,7 @@
-package basic.attacktypes;
+package basic.attack.types.builders;
 
-import basic.ruleobjects.DamageType;
+import basic.attack.DamageComponent;
+import basic.attack.types.RangedAttack;
 
 public class RangedAttackBuilder {
 
@@ -20,33 +21,21 @@ public class RangedAttackBuilder {
 		return this;
 	}
 	
+	/**
+	 * Is by default 1, so if the attack is only meant for 1 creature, there is no need to set it
+	 */
 	public RangedAttackBuilder setNumberOfTargets(int numberOfTargets) {
 		attack.setNumberOfTargets(numberOfTargets);
 		return this;
 	}
 
-	public RangedAttackBuilder setDamageDie(int damageDie) {
-		attack.setDamageDie(damageDie);
-		return this;
-	}
-	
-	public RangedAttackBuilder setTimesToThrowDamageDie(int timesToThrowDamageDie) {
-		attack.setTimesToThrowDamageDie(timesToThrowDamageDie);
-		return this;
-	}
-	
-	public RangedAttackBuilder setBaseDamage(int baseDamage) {
-		attack.setBaseDamage(baseDamage);
+	public RangedAttackBuilder addDamageComponent(DamageComponent component) {
+		attack.addToComponents(component);
 		return this;
 	}
 	
 	public RangedAttackBuilder setWeaponName(String weaponName) {
 		attack.setWeaponName(weaponName);
-		return this;
-	}
-	
-	public RangedAttackBuilder setDamageType(DamageType type) {
-		attack.setType(type);
 		return this;
 	}
 	

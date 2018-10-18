@@ -9,8 +9,9 @@ import static basic.ruleobjects.AbilityTypes.WIS;
 import static basic.ruleobjects.Skill.Perception;
 import static basic.ruleobjects.Skill.Stealth;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.DamageType;
 import basic.ruleobjects.modifiers.SkillModifier;
@@ -33,20 +34,14 @@ public class Lion extends AbstractEnemy {
 	private void setAttacks() {
 		MeleeAttackBuilder biteBuilder = new MeleeAttackBuilder();
 		MeleeAttack bite = biteBuilder.setWeaponName("Bite") //
-					.setBaseDamage(3)
 					.setToHit(5)//
-					.setDamageDie(8)//
-					.setTimesToThrowDamageDie(1)//
-					.setDamageType(DamageType.PIERCING)//
+					.addDamageComponent(new DamageComponent(1, 8, 3, DamageType.PIERCING))//
 					.build();
 		addToAvailableAttacks(bite);
 		MeleeAttackBuilder clawBuilder = new MeleeAttackBuilder();
 		MeleeAttack claw = clawBuilder.setWeaponName("Claw") //
-					.setBaseDamage(3)
 					.setToHit(5)//
-					.setDamageDie(6)//
-					.setTimesToThrowDamageDie(1)//
-					.setDamageType(DamageType.SLASHING)//
+					.addDamageComponent(new DamageComponent(1, 6, 3, DamageType.SLASHING))//
 					.build();
 		addToAvailableAttacks(claw);
 	}

@@ -1,9 +1,10 @@
 package basic.monsters;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
-import basic.attacktypes.SpecialAttack;
-import basic.attacktypes.SpecialAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.SpecialAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
+import basic.attack.types.builders.SpecialAttackBuilder;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.AbilityTypes;
 import basic.ruleobjects.DamageType;
@@ -32,11 +33,8 @@ public class GnollPackLord extends Gnoll implements PreparesForNextTurn {
 	protected void addGlaiveAttack() {
 		MeleeAttackBuilder glaiveBuilder = new MeleeAttackBuilder();
 		MeleeAttack glaive = glaiveBuilder.setWeaponName("Glaive")//
-				.setBaseDamage(3)//
 				.setToHit(5)//
-				.setDamageDie(10)//
-				.setTimesToThrowDamageDie(1)//
-				.setDamageType(DamageType.SLASHING)//
+				.addDamageComponent(new DamageComponent(1, 10, 3, DamageType.SLASHING))//
 				.build();
 		addToAvailableAttacks(glaive);
 	}
@@ -44,10 +42,7 @@ public class GnollPackLord extends Gnoll implements PreparesForNextTurn {
 	private void setSpecialAttacks() {
 		SpecialAttackBuilder InciteBuilder = new SpecialAttackBuilder();
 		SpecialAttack inciteRampage = InciteBuilder.setAreaOfEffect("1 cr. with rampage within 30ft.")//
-				.setBaseDamage(0)//
-				.setDamageDie(8)//
-				.setTimesToThrowDamageDie(0)//
-				.setDamageType(DamageType.MAGIC)//
+				.addDamageComponent(new DamageComponent(0, 8, 0, DamageType.MAGIC))// FIXME this is a special action, not an attack
 				.setSavingThrow(new SavingThrow(0, AbilityTypes.DEX))//
 				.setHalfDamageWhenSaved(false)//
 				.setWeaponName("Incite Rampage")//

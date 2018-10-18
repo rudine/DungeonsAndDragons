@@ -1,7 +1,8 @@
 package basic.monsters;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.DamageType;
@@ -24,19 +25,13 @@ public class Gargoyle extends AbstractEnemy {
 		MeleeAttackBuilder biteBuilder = new MeleeAttackBuilder();
 		MeleeAttack bite = biteBuilder.setWeaponName("Bite")//
 				.setToHit(4)//
-				.setBaseDamage(2)//
-				.setDamageDie(6)//
-				.setTimesToThrowDamageDie(1)//
-				.setDamageType(DamageType.PIERCING)//
+				.addDamageComponent(new DamageComponent(1, 6, 2, DamageType.PIERCING))//
 				.build();
 		addToAvailableAttacks(bite);
 		MeleeAttackBuilder clawBuilder = new MeleeAttackBuilder();
 		MeleeAttack claw = clawBuilder.setWeaponName("Claw")//
 				.setToHit(4)//
-				.setBaseDamage(2)//
-				.setDamageDie(6)//
-				.setTimesToThrowDamageDie(1)//
-				.setDamageType(DamageType.SLASHING)//
+				.addDamageComponent(new DamageComponent(1, 6, 2, DamageType.SLASHING))//
 				.build();
 		addToAvailableAttacks(claw);
 	}

@@ -1,9 +1,10 @@
 package basic.monsters;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
-import basic.attacktypes.SpecialAttack;
-import basic.attacktypes.SpecialAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.SpecialAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
+import basic.attack.types.builders.SpecialAttackBuilder;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.AbilityTypes;
 import basic.ruleobjects.DamageType;
@@ -30,31 +31,22 @@ public class Chimera extends AbstractEnemy implements PreparesForNextTurn{
 	private void setAttacks() {
 		MeleeAttackBuilder biteBuilder = new MeleeAttackBuilder();
 		MeleeAttack bite = biteBuilder.setWeaponName("Bite") //
-					.setBaseDamage(4)
 					.setToHit(7)//
-					.setDamageDie(6)//
-					.setTimesToThrowDamageDie(2)//
-					.setDamageType(DamageType.PIERCING)//
+					.addDamageComponent(new DamageComponent(2, 6, 4, DamageType.PIERCING))//
 					.setDescription(description)//
 					.build();
 		addToAvailableAttacks(bite);
 		MeleeAttackBuilder hornsBuilder = new MeleeAttackBuilder();
 		MeleeAttack horns = hornsBuilder.setWeaponName("Horns") //
-					.setBaseDamage(4)
 					.setToHit(7)//
-					.setDamageDie(12)//
-					.setTimesToThrowDamageDie(1)//
-					.setDamageType(DamageType.BLUDGEONING)//
+					.addDamageComponent(new DamageComponent(1, 12, 4, DamageType.BLUDGEONING))//
 					.setDescription(description)//
 					.build();
 		addToAvailableAttacks(horns);
 		MeleeAttackBuilder clawsBuilder = new MeleeAttackBuilder();
 		MeleeAttack claws = clawsBuilder.setWeaponName("Claws") //
-					.setBaseDamage(4)
 					.setToHit(7)//
-					.setDamageDie(6)//
-					.setTimesToThrowDamageDie(2)//
-					.setDamageType(DamageType.SLASHING)//
+					.addDamageComponent(new DamageComponent(2, 6, 4, DamageType.SLASHING))//
 					.build();
 		addToAvailableAttacks(claws);
 	}
@@ -62,10 +54,7 @@ public class Chimera extends AbstractEnemy implements PreparesForNextTurn{
 	private void setSpecialAttacks() {
 		SpecialAttackBuilder AOEBuilder = new SpecialAttackBuilder();
 		SpecialAttack fireBreath = AOEBuilder.setAreaOfEffect("15 foot cone")//
-				.setBaseDamage(0)//
-				.setDamageDie(8)//
-				.setTimesToThrowDamageDie(7)//
-				.setDamageType(DamageType.FIRE)//
+				.addDamageComponent(new DamageComponent(7, 8, 0, DamageType.FIRE))//
 				.setSavingThrow(new SavingThrow(15, AbilityTypes.DEX))//
 				.setHalfDamageWhenSaved(true)//
 				.setWeaponName("Fire Breath")//

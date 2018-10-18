@@ -1,5 +1,6 @@
-package basic.attacktypes;
+package basic.attack.types;
 
+import basic.attack.Attack;
 import basic.ruleobjects.Range;
 import basic.ruleobjects.SavingThrow;
 import basic.services.DiceService;

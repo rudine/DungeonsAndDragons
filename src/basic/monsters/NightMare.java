@@ -1,9 +1,8 @@
 package basic.monsters;
 
-import basic.attacktypes.MeleeAttack;
-import basic.attacktypes.MeleeAttackBuilder;
-import basic.attacktypes.SpecialAttack;
-import basic.attacktypes.SpecialAttackBuilder;
+import basic.attack.DamageComponent;
+import basic.attack.types.MeleeAttack;
+import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.DamageType;
@@ -18,21 +17,18 @@ public class NightMare extends AbstractEnemy {
 		setAttacksOnAttackAction(1);
 		setAttacks();
 		addToSpecialAbilities(SpecialAbility.ConferFireResistance, SpecialAbility.Illumination);
-		// special action Etherial Stride <-- add to Enemy and create special actions verwerk in gui
+		// FIXME special action Etherial Stride <-- add to Enemy and create special actions process in gui
 	}
 
 	private void setAttacks() {
 		MeleeAttackBuilder builder = new MeleeAttackBuilder();
 		MeleeAttack hooves = builder.setWeaponName("Hooves")//
 				.setToHit(6)//
-				.setBaseDamage(4 + 7)// FIXME plus 7 fire damage
-				.setDamageDie(8)//
-				.setTimesToThrowDamageDie(2)//
-				.setDamageType(DamageType.BLUDGEONING)//
+				.addDamageComponent(new DamageComponent(2, 8, 4, DamageType.BLUDGEONING))//
+				.addDamageComponent(new DamageComponent(2, 6, 0, DamageType.FIRE))//
 				.build();
 		addToAvailableAttacks(hooves);
 	}
-	
 	
 	@Override
 	public void doDamage(int damage, DamageType type) {
