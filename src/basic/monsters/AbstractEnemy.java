@@ -7,6 +7,7 @@ import java.util.TreeSet;
 
 import basic.ruleobjects.modifiers.SaveModifier;
 import basic.ruleobjects.modifiers.SkillModifier;
+import basic.action.Action;
 import basic.attack.Attack;
 import basic.attack.types.SpecialAttack;
 import basic.monsters.specialabilities.SpecialAbility;
@@ -35,6 +36,7 @@ public abstract class AbstractEnemy {
 	private Size size = Size.Medium;
 	private MonsterType monsterType = MonsterType.humanoid;
 	private Alignment alignment = Alignment.Neutral;
+	private Set<Action> actions = new HashSet<>(); 
 	
 	public void doDamage(int damage, DamageType type) {
 		setHitpoints(getHitpoints() - damage);
@@ -179,5 +181,17 @@ public abstract class AbstractEnemy {
 
 	public void setAlignment(Alignment alignment) {
 		this.alignment = alignment;
+	}
+
+	public void addToActions(Action action) {
+		this.actions.add(action);
+	}
+	
+	public Set<Action> getActions() {
+		return actions;
+	}
+
+	public void setActions(Set<Action> actions) {
+		this.actions = actions;
 	}
 }

@@ -1,5 +1,7 @@
 package basic.monsters;
 
+import basic.action.Action;
+import basic.action.ActionBuilder;
 import basic.attack.DamageComponent;
 import basic.attack.types.MeleeAttack;
 import basic.attack.types.SpecialAttack;
@@ -38,11 +40,11 @@ public class GnollPackLord extends Gnoll implements PreparesForNextTurn {
 				.build();
 		addToAvailableAttacks(glaive);
 	}
-	
+
 	private void setSpecialAttacks() {
 		SpecialAttackBuilder InciteBuilder = new SpecialAttackBuilder();
 		SpecialAttack inciteRampage = InciteBuilder.setAreaOfEffect("1 cr. with rampage within 30ft.")//
-				.addDamageComponent(new DamageComponent(0, 8, 0, DamageType.MAGIC))// FIXME this is a special action, not an attack
+				.addDamageComponent(new DamageComponent(0, 8, 0, DamageType.MAGIC)) //TODO, not a perfect fit
 				.setSavingThrow(new SavingThrow(0, AbilityTypes.DEX))//
 				.setHalfDamageWhenSaved(false)//
 				.setWeaponName("Incite Rampage")//

@@ -1,10 +1,10 @@
 package basic.monsters;
 
+import basic.action.Action;
+import basic.action.ActionBuilder;
 import basic.attack.DamageComponent;
 import basic.attack.types.MeleeAttack;
-import basic.attack.types.SpecialAttack;
 import basic.attack.types.builders.MeleeAttackBuilder;
-import basic.attack.types.builders.SpecialAttackBuilder;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.AbilityTypes;
 import basic.ruleobjects.DamageType;
@@ -21,8 +21,7 @@ public class Harpy extends AbstractEnemy {
 		setAbilityScores(new AbilityScores(12, 13, 12, 7, 10, 13));
 		setAttacksOnAttackAction(2);
 		setAttacks();
-		setSpecialAttacksOnAction(1);
-		setSpecialAttacks();
+		setActions();
 	}
 	
 	private void setAttacks() {
@@ -40,19 +39,14 @@ public class Harpy extends AbstractEnemy {
 		addToAvailableAttacks(club);
 	}
 	
-	private void setSpecialAttacks() {
-		// TODO also not a good fit for a special attack, see if it fits in the same category 
-		// as the special actions
-		SpecialAttackBuilder luresongBuilder = new SpecialAttackBuilder();
-		SpecialAttack luringSong = luresongBuilder.setWeaponName("Luring song")//
-				.setAreaOfEffect("300 feet")//
-				.setSavingThrow(new SavingThrow(11, AbilityTypes.WIS))
-				.setRecharge(false)
-				.setAvailable(true)//
+	private void setActions() {
+		ActionBuilder builder = new ActionBuilder();
+		Action luringSong = builder.setName("Luring song")//
+				.setArea("300ft.")//
+				.setSave(new SavingThrow(11, AbilityTypes.WIS))//
 				.setDescription(lookupLuringSongDescription())//
-				.addDamageComponent(new DamageComponent(0, 4, 0, DamageType.MAGIC))//
 				.build();
-		addToSpecialAttacks(luringSong);
+		addToActions(luringSong);
 	}
 	
 	private String lookupLuringSongDescription() {

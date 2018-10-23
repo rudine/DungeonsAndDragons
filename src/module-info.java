@@ -15,4 +15,5 @@ module dungeonsAndDragons {
 	exports basic.monsters.specialabilities to basic.monsters;
 	exports basic.attack.types to basic.monsters;
 	exports basic.attack to basic.monsters;
+	exports basic.action to basic.monsters;
 }

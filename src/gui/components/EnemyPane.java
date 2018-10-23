@@ -3,6 +3,7 @@ package gui.components;
 import java.util.ArrayList;
 import java.util.List;
 
+import basic.action.Action;
 import basic.attack.Attack;
 import basic.attack.types.SpecialAttack;
 import basic.monsters.AbstractEnemy;
@@ -44,6 +45,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		addDamagePane();
 		refreshAttackPanes(true);
 		addSpecialAbilitiesPane();
+		addOtherActionsPane();
 		addAdvantageCheckBoxes();
 	}
 
@@ -87,7 +89,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 			this.getChildren().remove(specialAttackPane);
 		}
 		updateAttackPane(start);
-		initSpecialAttackPane(start);
+		updateSpecialAttackPane(start);
 	}
 
 	private void updateAttackPane(boolean start) {
@@ -107,7 +109,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		add(attackPane, 0, 2);
 	}
 
-	private void initSpecialAttackPane(boolean start) {
+	private void updateSpecialAttackPane(boolean start) {
 		specialAttackPane = new VBox(10);
 		specialAttackPane.setPadding(insets);
 		specialAttackPane.setMinHeight(150);
@@ -146,7 +148,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 			add(specialAttackPane, 0, 3);
 		}
 	}
-
+	
 	private void addSpecialAbilitiesPane() {
 		if (!enemy.getSpecialAbilities().isEmpty()) {
 			VBox specAbPane = new VBox(10);
@@ -164,7 +166,25 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 			add(specAbPane, 0, 4);
 		}
 	}
+	
+	private void addOtherActionsPane() {
+		if(!enemy.getActions().isEmpty()) {
+			VBox actionsPane = new VBox(10);
+			actionsPane.setPadding(insets);
 
+			List<Text> texts = new ArrayList<>();
+			for (Action a : enemy.getActions()) {
+				Text title = new Text("Other Actions: ");
+				title.setFont(titleFont);
+				texts.add(title);
+				texts.add(new Text(a.toString()));
+			}
+			texts.forEach(t -> t.setWrappingWidth(580));
+			actionsPane.getChildren().addAll(texts);
+			add(actionsPane, 0, 5);
+		}
+	}
+	
 	private void addAdvantageCheckBoxes() {
 		VBox checkboxes = new VBox(10);
 		checkboxes.setPadding(insets);
@@ -176,7 +196,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		disadvantageBox.setOnAction(e -> enemy.setDisadvantageOnAttacks(!enemy.isDisadvantageOnAttacks()));
 
 		checkboxes.getChildren().addAll(advantageBox, disadvantageBox);
-		add(checkboxes, 0, 5);
+		add(checkboxes, 0, 6);
 	}
 
 	private void onDamageAdded() {

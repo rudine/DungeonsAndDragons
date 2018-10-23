@@ -1,11 +1,15 @@
 package basic.monsters;
 
+import basic.action.Action;
+import basic.action.ActionBuilder;
 import basic.attack.DamageComponent;
 import basic.attack.types.MeleeAttack;
 import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.AbilityScores;
+import basic.ruleobjects.AbilityTypes;
 import basic.ruleobjects.DamageType;
+import basic.ruleobjects.SavingThrow;
 
 public class NightMare extends AbstractEnemy {
 	
@@ -17,7 +21,7 @@ public class NightMare extends AbstractEnemy {
 		setAttacksOnAttackAction(1);
 		setAttacks();
 		addToSpecialAbilities(SpecialAbility.ConferFireResistance, SpecialAbility.Illumination);
-		// FIXME special action Etherial Stride <-- add to Enemy and create special actions process in gui
+		setActions();
 	}
 
 	private void setAttacks() {
@@ -28,6 +32,21 @@ public class NightMare extends AbstractEnemy {
 				.addDamageComponent(new DamageComponent(2, 6, 0, DamageType.FIRE))//
 				.build();
 		addToAvailableAttacks(hooves);
+	}
+	
+	private void setActions() {
+		ActionBuilder builder = new ActionBuilder();
+		Action etherealStride = builder.setName("Etherial stride")//
+				.setArea("max 3 willing creatures within 5ft.")//
+				.setDescription(getEtherialStrideDescription())//
+				.build();
+		addToActions(etherealStride);
+	}
+	
+	private String getEtherialStrideDescription() {
+		return "The nightmare and up to three willing creatures within 5 feet"
+				+ " of it magically enter the Ethereal Plane from the Material"
+				+ " Plane, or vice versa.";
 	}
 	
 	@Override
