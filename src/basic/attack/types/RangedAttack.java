@@ -6,9 +6,6 @@ public class RangedAttack extends Attack {
 
 	private String range;
 
-	public RangedAttack() {
-	}
-
 	public String getRange() {
 		return range;
 	}

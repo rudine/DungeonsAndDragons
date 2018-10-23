@@ -6,9 +6,6 @@ public class MeleeAttack extends Attack {
 	
 	private int reach = 5;
 	
-	public MeleeAttack() {
-	}
-
 	public int getReach() {
 		return reach;
 	}

@@ -15,9 +15,6 @@ public class SpecialAttack extends Attack {
 	private int availabilityDie;
 	private Range succesRange = new Range(0,0);	
 	
-	public SpecialAttack() {
-	}
-
 	public String getAreaOfEffect() {
 		return areaOfEffect;
 	}
