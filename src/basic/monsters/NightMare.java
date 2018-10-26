@@ -7,9 +7,7 @@ import basic.attack.types.MeleeAttack;
 import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.AbilityScores;
-import basic.ruleobjects.AbilityTypes;
 import basic.ruleobjects.DamageType;
-import basic.ruleobjects.SavingThrow;
 
 public class NightMare extends AbstractEnemy {
 	

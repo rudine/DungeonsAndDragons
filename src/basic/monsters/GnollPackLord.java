@@ -1,7 +1,5 @@
 package basic.monsters;
 
-import basic.action.Action;
-import basic.action.ActionBuilder;
 import basic.attack.DamageComponent;
 import basic.attack.types.MeleeAttack;
 import basic.attack.types.SpecialAttack;
