@@ -12,7 +12,8 @@ public enum SpecialAbility {
 	Pounce("Pounce", "If this enemy moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the enemy can make one bite attack against it as a bonus action."),
 	Rampage("Rampage", "If this enemy reduces a creature to 0 hitpoints with a melee attack on its turn, the enemy can take a bonus attack to move up to half its speed and make a bite attack"),
 	RunningLeap("Running Leap", "With a 10-foot running start, the enemy can long jump up to 25 feet."),
-	SnowCamouflage("Snow Camouflage", "Has advantage on Dexterity(Stealth) checks made to hide in snowy terrain.");
+	SnowCamouflage("Snow Camouflage", "Has advantage on Dexterity(Stealth) checks made to hide in snowy terrain."),
+	StandingLeap("Standing Leap", "The enemy's long jump is up to 30ft. and its high jump is up to 15ft. with or without a running start");
 	
 	private String name;
 	
