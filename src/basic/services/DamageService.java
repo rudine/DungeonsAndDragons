@@ -20,9 +20,9 @@ public class DamageService {
 	}
 
 	public static int getAttackDamage(int sidesOfDie, int timesDieThrown, int baseDamage, boolean critical) {
-		int throwDie = DiceService.throwDice(timesDieThrown, sidesOfDie);
 		if (critical)
-			throwDie *= 2;
+			timesDieThrown *= 2;
+		int throwDie = DiceService.throwDice(timesDieThrown, sidesOfDie);
 		return baseDamage + throwDie;
 	}
 
