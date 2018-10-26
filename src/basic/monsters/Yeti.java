@@ -75,4 +75,6 @@ public class Yeti extends AbstractEnemy {
 				"or if the effect ends on it, the target is immune to the Chilling\r\n" + 
 				"Gaze of all yetis (but not abominable yetis) for 1 hour.";
 	}
+	
+	//TODO if taken fire damage set disadvantage on attack rolls true for 1 round
 }
