@@ -7,6 +7,7 @@ import basic.action.Action;
 import basic.attack.Attack;
 import basic.attack.types.SpecialAttack;
 import basic.monsters.AbstractEnemy;
+import basic.monsters.interfaces.DamageTypeCausesDisadvantage;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.DamageType;
 import basic.services.DamageService;
@@ -36,6 +37,9 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 	protected VBox attackPane;
 	private VBox specialAttackPane;
 	private Font titleFont = Font.font("Verdana", FontWeight.BOLD, 12);
+	private CheckBox disadvantageBox;
+	private CheckBox advantageBox;
+	private VBox checkboxes;
 
 	public EnemyPane(T enemy) {
 		this.enemy = enemy;
@@ -186,13 +190,13 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 	}
 	
 	private void addAdvantageCheckBoxes() {
-		VBox checkboxes = new VBox(10);
+		checkboxes = new VBox(10);
 		checkboxes.setPadding(insets);
 
-		CheckBox advantageBox = new CheckBox("Has advantage on attacks");
+		advantageBox = new CheckBox("Has advantage on attacks");
 		advantageBox.setOnAction(e -> enemy.setAdvantageOnAttacks(!enemy.isAdvantageOnAttacks()));
-
-		CheckBox disadvantageBox = new CheckBox("Has disadvantage on attakcs");
+		
+		disadvantageBox = new CheckBox("Has disadvantage on attacks");
 		disadvantageBox.setOnAction(e -> enemy.setDisadvantageOnAttacks(!enemy.isDisadvantageOnAttacks()));
 
 		checkboxes.getChildren().addAll(advantageBox, disadvantageBox);
@@ -211,6 +215,10 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		titlePane.getChildren().add(2, aliveText);
 		titlePane.getChildren().add(3, hitpointText);
 
+		if(enemy instanceof DamageTypeCausesDisadvantage && ((DamageTypeCausesDisadvantage) enemy).getRoundsAffected() > 0) {
+			disadvantageBox.setSelected(enemy.isDisadvantageOnAttacks());
+		}
+		
 		inputField.clear();
 		damageTypesBox.setValue(null);
 	}
@@ -273,5 +281,10 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 			attackText.setFill(Color.RED);
 		}
 		texts.add(attackText);
+	}
+	
+	public void refreshCheckBoxes() {
+		disadvantageBox.setSelected(enemy.isDisadvantageOnAttacks());
+		advantageBox.setSelected(enemy.isAdvantageOnAttacks());
 	}
 }

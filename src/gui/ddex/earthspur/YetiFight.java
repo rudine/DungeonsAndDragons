@@ -57,9 +57,12 @@ public class YetiFight extends Application {
 	}
 	
 	private void nextTurn() {
+		yetis.stream().filter(y -> y.getRoundsAffected() > 0).forEach(y -> y.setRoundsAffected(y.getRoundsAffected() - 1));
+		yetis.stream().filter(y -> y.getRoundsAffected() == 0).forEach(y -> y.setDisadvantageOnAttacks(false));
 		for(EnemyPane<Yeti> y: yetiPanes) {
 			y.refreshAttackPanes(false);
 			y.refreshHeader();
+			y.refreshCheckBoxes();
 		}
 	}
 	
