@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import basic.monsters.AbstractEnemy;
-import basic.monsters.PreparesForNextTurn;
 import basic.monsters.Thug;
 import basic.monsters.Veteran;
 import basic.monsters.earthspur.BPFDragonHead;
 import basic.monsters.earthspur.BPFGoatHead;
 import basic.monsters.earthspur.BPFLionHead;
+import basic.monsters.interfaces.PreparesForNextTurn;
 import basic.services.StandardRulesService;
 import gui.components.EnemyPane;
 import gui.components.enemyspecific.VeteranPane;

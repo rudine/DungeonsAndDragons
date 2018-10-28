@@ -12,7 +12,7 @@ import basic.attack.types.SpecialAttack;
 import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.attack.types.builders.SpecialAttackBuilder;
 import basic.monsters.AbstractEnemy;
-import basic.monsters.PreparesForNextTurn;
+import basic.monsters.interfaces.PreparesForNextTurn;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.AbilityTypes;

@@ -5,6 +5,7 @@ import basic.attack.types.MeleeAttack;
 import basic.attack.types.SpecialAttack;
 import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.attack.types.builders.SpecialAttackBuilder;
+import basic.monsters.interfaces.PreparesForNextTurn;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.AbilityTypes;
 import basic.ruleobjects.DamageType;

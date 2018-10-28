@@ -5,8 +5,8 @@ import basic.attack.types.MeleeAttack;
 import basic.attack.types.RangedAttack;
 import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.attack.types.builders.RangedAttackBuilder;
-import basic.monsters.PreparesForNextTurn;
 import basic.monsters.Thug;
+import basic.monsters.interfaces.PreparesForNextTurn;
 import basic.ruleobjects.DamageType;
 
 public class AudriciaRoaringhorn extends Thug implements PreparesForNextTurn{

@@ -1,4 +1,4 @@
-package basic.monsters;
+package basic.monsters.interfaces;
 
 public interface PreparesForNextTurn {
 	
