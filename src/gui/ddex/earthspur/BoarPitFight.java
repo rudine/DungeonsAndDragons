@@ -95,7 +95,10 @@ public class BoarPitFight extends Application {
 			p.refreshAttackPanes(false);
 			p.refreshHeader();
 		}
-		fighters.stream().filter(f -> (f instanceof PreparesForNextTurn)).forEach(f -> ((PreparesForNextTurn)f).prepareForNextTurn());
+		fighters.stream()
+				.filter(f -> (f instanceof PreparesForNextTurn))//
+				.forEach(f -> ((PreparesForNextTurn)f)//
+				.prepareForNextTurn());
 	}
 
 	private void setStage(Stage primaryStage) {
