@@ -22,7 +22,7 @@ public class YetiFight extends Application {
 	private int dmInitiative;
 	private List<EnemyPane<Yeti>> yetiPanes;
 	private String fightTitle = "Yeti fight";
-	private int numberOfEnemies = 2;
+	private int numberOfEnemies = 5;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -36,7 +36,15 @@ public class YetiFight extends Application {
 			yetis.add(yeti);
 			EnemyPane<Yeti> yetiPane = new EnemyPane<>(yeti);
 			yetiPanes.add(yetiPane);
-			basePane.add(yetiPane, i, 1);
+			if(i < 3) {
+				basePane.add(yetiPane, i, 1);
+			}
+			else if(i > 2 && i < 6){
+				basePane.add(yetiPane, i-3, 2);
+			}
+			else {
+				basePane.add(yetiPane, i-6, 3);
+			}
 		}
 
 		dmInitiative = StandardRulesService.determineDMInitiative(yetis.stream().map(h -> h.getAbilityScores().getDexterityModifier()).collect(Collectors.toList()));
