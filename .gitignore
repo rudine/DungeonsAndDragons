@@ -8,7 +8,7 @@ bin/
 .fbExcludeFilterFile
 *.log
 *.log.?
-.rebel.xml
+./src/rebel.xml
 .rebel.xml.bak
 logs
 dependency-reduced-pom.xml
