@@ -47,6 +47,7 @@ public class Yeti extends AbstractEnemy implements DamageTypeCausesDisadvantage 
 	private void setAttacks() {
 		MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
 		MeleeAttack claw = meleeBuilder.setWeaponName("Claw")//
+				.setToHit(6)
 				.addDamageComponent(new DamageComponent(2, 6, 4, DamageType.SLASHING))//
 				.addDamageComponent(new DamageComponent(1, 6, 0, DamageType.COLD))//
 				.build();

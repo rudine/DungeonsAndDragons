@@ -11,22 +11,27 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class YetiFight extends Application {
+	private ScrollPane scrollpane;
 	private List<Yeti> yetis;
 	private GridPane basePane;
 	private int dmInitiative;
 	private List<EnemyPane<Yeti>> yetiPanes;
 	private String fightTitle = "Yeti fight";
-	private int numberOfEnemies = 5;
+	private int numberOfEnemies = 7;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.basePane = new GridPane();
+		basePane.setPrefSize(1850, 1000);
+		this.scrollpane = new ScrollPane(basePane);
+
 		
 		yetis = new ArrayList<>();
 		yetiPanes = new ArrayList<>();
@@ -36,15 +41,7 @@ public class YetiFight extends Application {
 			yetis.add(yeti);
 			EnemyPane<Yeti> yetiPane = new EnemyPane<>(yeti);
 			yetiPanes.add(yetiPane);
-			if(i < 3) {
-				basePane.add(yetiPane, i, 1);
-			}
-			else if(i > 2 && i < 6){
-				basePane.add(yetiPane, i-3, 2);
-			}
-			else {
-				basePane.add(yetiPane, i-6, 3);
-			}
+			basePane.add(yetiPane, i, 1);
 		}
 
 		dmInitiative = StandardRulesService.determineDMInitiative(yetis.stream().map(h -> h.getAbilityScores().getDexterityModifier()).collect(Collectors.toList()));
@@ -75,7 +72,7 @@ public class YetiFight extends Application {
 	}
 	
 	private void setStage(Stage primaryStage) {
-		Scene scene = new Scene(basePane);
+		Scene scene = new Scene(scrollpane);
 		primaryStage.setTitle(fightTitle);
 		primaryStage.setScene(scene);
 		primaryStage.show();
