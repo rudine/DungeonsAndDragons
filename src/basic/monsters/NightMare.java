@@ -8,12 +8,13 @@ import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.DamageType;
+import basic.services.DiceService;
 
 public class NightMare extends AbstractEnemy {
 	
 	public NightMare() {
 		setAC(13);
-		setHitpoints(68);
+		setHitpoints(DiceService.throwD10(8) + 24);
 		setSpeed("60 ft. 12v, fly 90ft. 18v");
 		setAbilityScores(new AbilityScores(18, 15, 16, 10, 13, 15));
 		setAttacksOnAttackAction(1);
