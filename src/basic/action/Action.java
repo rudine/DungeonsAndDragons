@@ -44,15 +44,16 @@ public class Action {
 		this.description = description;
 	}
 
-	public String toString(Action action) {
+	@Override
+	public String toString() {
 		StringBuilder textBuilder = new StringBuilder();
-		textBuilder.append(action.getName() + " - ");
+		textBuilder.append(getName() + " - ");
 		if (save != null) {
-			textBuilder.append(action.getSave().toString());
+			textBuilder.append(getSave().toString());
 			textBuilder.append(". ");
 		}
-		textBuilder.append("Area of Effect: " + action.getAreaOfEffect());
-		textBuilder.append(" " + action.getDescription());
+		textBuilder.append("Area of Effect: " + getAreaOfEffect());
+		textBuilder.append(" " + getDescription());
 		return textBuilder.toString();
 	}
 }
