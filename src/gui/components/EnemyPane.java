@@ -259,6 +259,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 										.mapToInt(a -> a.getNumberOfUsesOnMultiAttack())//
 										.sum();
 		int attacksOnAttackAction = enemy.getAttacksOnAttackAction();
+		//TODO dit klopt niet helemaal zoals bij de medusa het geval is. Die heeft 3 soorten aanvallen. Ze kan 3 melee of 2 ranged in een beurt
 		
 		if(totalAttacksFromUses == 0 ||(totalAttacksFromUses > attacksOnAttackAction))
 			return false;

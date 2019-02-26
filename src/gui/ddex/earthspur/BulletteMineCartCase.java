@@ -24,7 +24,7 @@ public class BulletteMineCartCase extends Application {
 	private int dmInitiative;
 	private List<EnemyPane<Bulette>> bulettePanes;
 	private String fightTitle = "Bulette minecart chase";
-	private int numberOfEnemies = 3;
+	private int numberOfEnemies = 2;
 	private int numberOfCarts = 3;
 	private int numberOfTurns = 10;
 

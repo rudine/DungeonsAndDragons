@@ -15,8 +15,8 @@ public class GiantBadgerPane extends EnemyPane<GiantBadger>{
 	
 	@Override
 	protected void getAttackText(List<Text> texts) {
-		for (Attack a : enemy.getAvailableAttacks()) {
-			addAttackText(texts, a);
+		for (Attack attack : enemy.getAvailableAttacks()) {
+			addAttackText(texts, attack);
 		}
 		texts.forEach(t -> t.setWrappingWidth(580));
 		attackPane.setMinHeight(3 * 30);
