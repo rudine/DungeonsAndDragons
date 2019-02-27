@@ -4,7 +4,6 @@ import static basic.monsters.specialabilities.SpecialAbility.Amorphous;
 import static basic.monsters.specialabilities.SpecialAbility.CorrosiveForm;
 import static basic.monsters.specialabilities.SpecialAbility.SpiderClimb;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import basic.attack.DamageComponent;
@@ -18,6 +17,8 @@ import basic.services.DiceService;
 public class BlackPudding extends AbstractEnemy implements PreparesForNextTurn {
 
 	private boolean isSplitThisRound;
+	
+	private List<BlackPudding> splittedPuddings;
 	
 	public BlackPudding() {
 		setAC(7);
@@ -51,27 +52,29 @@ public class BlackPudding extends AbstractEnemy implements PreparesForNextTurn {
 	 * at least 10 hit points. Each new pudding has hit points equal to half the original pudding's, rounded down. New puddings are one size smaller
 	 * than the original pudding. 
 	 */
-	public List<BlackPudding> split() {
-		List<BlackPudding> splittedPudding = new ArrayList<>();
+	public void split() {
 		if (getHitpoints() >= 10 && !isSplitThisRound) {
 			for (int i = 0; i < 2; i++) {
-				splittedPudding.add(new BlackPudding((int)(getHitpoints() / 2)));
+				splittedPuddings.add(new BlackPudding((int)(getHitpoints() / 2)));
 			}
 			isSplitThisRound = true;
-		} else {
-			splittedPudding.add(this);
 		}
-		return splittedPudding;
 	}
 
 	@Override
 	public void doDamage(int damage, DamageType type) {
 		switch (type) {
 		case ACID:
-		case COLD:
-		case LIGHTNING:
-		case SLASHING:
 			setHitpoints(getHitpoints());
+			break;
+		case COLD:
+			setHitpoints(getHitpoints());
+			break;
+		case LIGHTNING:
+			split();
+			break;
+		case SLASHING:
+			split();
 			break;
 		default:
 			super.doDamage(damage, type);
@@ -81,5 +84,13 @@ public class BlackPudding extends AbstractEnemy implements PreparesForNextTurn {
 	@Override
 	public void prepareForNextTurn() {
 		isSplitThisRound = false;
+	}
+
+	public boolean isSplitThisRound() {
+		return isSplitThisRound;
+	}
+
+	public void setSplitThisRound(boolean isSplitThisRound) {
+		this.isSplitThisRound = isSplitThisRound;
 	}
 }
