@@ -10,6 +10,7 @@ import basic.attack.types.SpecialAttack;
 import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.attack.types.builders.SpecialAttackBuilder;
 import basic.monsters.interfaces.DamageTypeCausesDisadvantage;
+import basic.monsters.interfaces.PreparesForNextTurn;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.AbilityTypes;
 import basic.ruleobjects.Alignment;
@@ -21,7 +22,7 @@ import basic.ruleobjects.Skill;
 import basic.ruleobjects.modifiers.SkillModifier;
 import basic.services.DiceService;
 
-public class Yeti extends AbstractEnemy implements DamageTypeCausesDisadvantage {
+public class Yeti extends AbstractEnemy implements DamageTypeCausesDisadvantage, PreparesForNextTurn {
 
 	private int roundsAffected;
 	
@@ -88,7 +89,16 @@ public class Yeti extends AbstractEnemy implements DamageTypeCausesDisadvantage 
 		}
 		super.doDamage(damage, type);
 	}
-
+	
+	@Override
+	public void prepareForNextTurn() {
+		if(getRoundsAffected() > 0)
+			roundsAffected--;
+		
+		if(getRoundsAffected() == 0)
+			setDisadvantageOnAttacks(false);
+	}
+	
 	@Override
 	public void setRoundsAffected(int roundsAffected) {
 		this.roundsAffected = roundsAffected;

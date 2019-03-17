@@ -32,7 +32,6 @@ public class YetiFight extends Application {
 		basePane.setPrefSize(1850, 1000);
 		this.scrollpane = new ScrollPane(basePane);
 
-		
 		yetis = new ArrayList<>();
 		yetiPanes = new ArrayList<>();
 		
@@ -62,8 +61,7 @@ public class YetiFight extends Application {
 	}
 	
 	private void nextTurn() {
-		yetis.stream().filter(y -> y.getRoundsAffected() > 0).forEach(y -> y.setRoundsAffected(y.getRoundsAffected() - 1));
-		yetis.stream().filter(y -> y.getRoundsAffected() == 0).forEach(y -> y.setDisadvantageOnAttacks(false));
+		yetis.forEach(y -> y.prepareForNextTurn());
 		for(EnemyPane<Yeti> y: yetiPanes) {
 			y.refreshAttackPanes(false);
 			y.refreshHeader();

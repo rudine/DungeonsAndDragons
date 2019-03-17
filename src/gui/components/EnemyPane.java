@@ -40,6 +40,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 	private CheckBox disadvantageBox;
 	private CheckBox advantageBox;
 	private VBox checkboxes;
+	private HBox additionalTextPane;
 
 	public EnemyPane(T enemy) {
 		this.enemy = enemy;
@@ -53,6 +54,11 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		addAdvantageCheckBoxes();
 	}
 
+	public EnemyPane(T enemy, String additionalText) {
+		this(enemy);
+		addAdditonalTextPane(additionalText);
+	}
+
 	private Text getAliveText() {
 		return new Text(enemy.isAlive() ? "is alive" : "DEAD");
 	}
@@ -64,8 +70,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		Text name = new Text(enemy.getClass().getSimpleName());
 		name.setFont(titleFont);
 		name.setFill(Color.MAROON);
-		titlePane.getChildren().addAll(name, new Text("AC: " + enemy.getAC()),
-				aliveText, hitpointText, idField);
+		titlePane.getChildren().addAll(name, new Text("AC: " + enemy.getAC()), aliveText, hitpointText, idField);
 		add(titlePane, 0, 0);
 	}
 
@@ -152,7 +157,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 			add(specialAttackPane, 0, 3);
 		}
 	}
-	
+
 	private void addSpecialAbilitiesPane() {
 		if (!enemy.getSpecialAbilities().isEmpty()) {
 			VBox specAbPane = new VBox(10);
@@ -170,9 +175,9 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 			add(specAbPane, 0, 4);
 		}
 	}
-	
+
 	private void addOtherActionsPane() {
-		if(!enemy.getActions().isEmpty()) {
+		if (!enemy.getActions().isEmpty()) {
 			VBox actionsPane = new VBox(10);
 			actionsPane.setPadding(insets);
 
@@ -188,14 +193,14 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 			add(actionsPane, 0, 5);
 		}
 	}
-	
+
 	private void addAdvantageCheckBoxes() {
 		checkboxes = new VBox(10);
 		checkboxes.setPadding(insets);
 
 		advantageBox = new CheckBox("Has advantage on attacks");
 		advantageBox.setOnAction(e -> enemy.setAdvantageOnAttacks(!enemy.isAdvantageOnAttacks()));
-		
+
 		disadvantageBox = new CheckBox("Has disadvantage on attacks");
 		disadvantageBox.setOnAction(e -> enemy.setDisadvantageOnAttacks(!enemy.isDisadvantageOnAttacks()));
 
@@ -215,10 +220,11 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		titlePane.getChildren().add(2, aliveText);
 		titlePane.getChildren().add(3, hitpointText);
 
-		if(enemy instanceof DamageTypeCausesDisadvantage && ((DamageTypeCausesDisadvantage) enemy).getRoundsAffected() > 0) {
+		if (enemy instanceof DamageTypeCausesDisadvantage
+				&& ((DamageTypeCausesDisadvantage) enemy).getRoundsAffected() > 0) {
 			disadvantageBox.setSelected(enemy.isDisadvantageOnAttacks());
 		}
-		
+
 		inputField.clear();
 		damageTypesBox.setValue(null);
 	}
@@ -232,14 +238,13 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 	}
 
 	protected void getAttackText(List<Text> texts) {
-		if(heeftScheveVerdelingAttacksByMultiAttack()) {
-			for(Attack a: enemy.getAvailableAttacks()) {
-				for(int i = 0; i < a.getNumberOfUsesOnMultiAttack(); i++) {
+		if (heeftScheveVerdelingAttacksByMultiAttack()) {
+			for (Attack a : enemy.getAvailableAttacks()) {
+				for (int i = 0; i < a.getNumberOfUsesOnMultiAttack(); i++) {
 					addAttackText(texts, a);
 				}
 			}
-		}
-		else {
+		} else {
 			for (int i = 0; i < enemy.getAttacksOnAttackAction(); i++) {
 				for (Attack a : enemy.getAvailableAttacks()) {
 					addAttackText(texts, a);
@@ -248,44 +253,66 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		}
 		texts.forEach(t -> t.setWrappingWidth(580));
 	}
-	
+
 	protected boolean heeftScheveVerdelingAttacksByMultiAttack() {
-		//of het getal is 0 --> niet ingesteld, toon available attacks zo vaak als er attacks on attack action zijn
-		//of het getal is gelijk aan attacks on attack action --> toon alle attacks zo vaak als ze uses hebben
-		//of het getal is kleiner dan attacks on attack action --> er is iets fout, IllegalArgumentException 
-		//of het getal is groter dan attacks on attack action --> zoals bij 0
+		// of het getal is 0 --> niet ingesteld, toon available attacks zo vaak als er
+		// attacks on attack action zijn
+		// of het getal is gelijk aan attacks on attack action --> toon alle attacks zo
+		// vaak als ze uses hebben
+		// of het getal is kleiner dan attacks on attack action --> er is iets fout,
+		// IllegalArgumentException
+		// of het getal is groter dan attacks on attack action --> zoals bij 0
 		int totalAttacksFromUses = enemy.getAvailableAttacks()//
-										.stream()//
-										.mapToInt(a -> a.getNumberOfUsesOnMultiAttack())//
-										.sum();
+				.stream()//
+				.mapToInt(a -> a.getNumberOfUsesOnMultiAttack())//
+				.sum();
 		int attacksOnAttackAction = enemy.getAttacksOnAttackAction();
-		//TODO dit klopt niet helemaal zoals bij de medusa het geval is. Die heeft 3 soorten aanvallen. Ze kan 3 melee of 2 ranged in een beurt
-		
-		if(totalAttacksFromUses == 0 ||(totalAttacksFromUses > attacksOnAttackAction))
+		// TODO dit klopt niet helemaal zoals bij de medusa het geval is. Die heeft 3
+		// soorten aanvallen. Ze kan 3 melee of 2 ranged in een beurt
+
+		if (totalAttacksFromUses == 0 || (totalAttacksFromUses > attacksOnAttackAction))
 			return false;
-		
-		if(totalAttacksFromUses == attacksOnAttackAction)
+
+		if (totalAttacksFromUses == attacksOnAttackAction)
 			return true;
-		
-		if(totalAttacksFromUses < attacksOnAttackAction)
+
+		if (totalAttacksFromUses < attacksOnAttackAction)
 			throw new IllegalArgumentException("De som van de uses van attacks on attack"
-					+ " action is kleiner dan attacks on attack action, er is ergens iets "
-					+ "niet goed ingevuld");
+					+ " action is kleiner dan attacks on attack action, er is ergens iets " + "niet goed ingevuld");
 		return false;
 	}
 
 	protected void addAttackText(List<Text> texts, Attack a) {
-		AttackText text = DamageService.getAttackText(a, enemy.isAdvantageOnAttacks(),
-				enemy.isDisadvantageOnAttacks());
+		AttackText text = DamageService.getAttackText(a, enemy.isAdvantageOnAttacks(), enemy.isDisadvantageOnAttacks());
 		Text attackText = new Text(text.getText());
 		if (text.isCritical()) {
 			attackText.setFill(Color.RED);
 		}
 		texts.add(attackText);
 	}
-	
+
 	public void refreshCheckBoxes() {
 		disadvantageBox.setSelected(enemy.isDisadvantageOnAttacks());
 		advantageBox.setSelected(enemy.isAdvantageOnAttacks());
+	}
+
+	private void addAdditonalTextPane(String additionalText) {
+
+		if (additionalText != null ) {
+			additionalTextPane = new HBox(10);
+			additionalTextPane.setPadding(insets);
+			if (!additionalText.isEmpty()) {
+				additionalTextPane.getChildren().add(new Text(additionalText));
+			}
+			add(additionalTextPane, 0, 7);
+		}
+	}
+
+	public HBox getAdditionalTextPane() {
+		return additionalTextPane;
+	}
+
+	public AbstractEnemy getEnemy() {
+		return enemy;
 	}
 }
