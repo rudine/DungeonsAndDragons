@@ -29,7 +29,7 @@ public class BloodHawksFight extends Application {
 	private EnemyPane<Hippogriff> hippogriffPane;
 	private String fightTitle = "Fight on the top of the tower, near the shrine of Talos";
 	private int numberOfBloodhawks = 8;
-	private boolean includeHippogriff = true;
+	private boolean includeHippogriff = false;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -84,10 +84,10 @@ public class BloodHawksFight extends Application {
 		nextTurnActions(hippogriffPane);
 	}
 
-	private <T extends AbstractEnemy> void nextTurnActions(EnemyPane<T> bloodhawkPane) {
-		bloodhawkPane.refreshAttackPanes(false);
-		bloodhawkPane.refreshHeader();
-		bloodhawkPane.refreshCheckBoxes();
+	private <T extends AbstractEnemy> void nextTurnActions(EnemyPane<T> pane) {
+		pane.refreshAttackPanes(false);
+		pane.refreshHeader();
+		pane.refreshCheckBoxes();
 	}
 	
 	private void setStage(Stage primaryStage) {
