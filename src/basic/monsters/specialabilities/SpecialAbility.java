@@ -17,7 +17,7 @@ public enum SpecialAbility {
 	LightningAbsorption("Lightning absorption", "Whenever this enemy receives lightning damage, it takes no damage and instead regains a number of hit points equal to the damage dealt."),
 	MagicResistance("Magic resistance", "This enemy had advantage on svaing throuws against spells and other magical effects."),
 	MagicWeapons("Magic weapons","The attacks of this enemy are magical"),
-	PackTactics("Pack Tactics", "Has advantage on an attack roll against a creature if at least one of the lion’s allies is within 5 feet of the creature and the ally isn’t incapacitated."),
+	PackTactics("Pack Tactics", "Has advantage on an attack roll against a creature if at least one of the allies of this enemy is within 5 feet of the creature and the ally isn’t incapacitated."),
 	Pounce("Pounce", "If this enemy moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the enemy can make one bite attack against it as a bonus action."),
 	Rampage("Rampage", "If this enemy reduces a creature to 0 hitpoints with a melee attack on its turn, the enemy can take a bonus attack to move up to half its speed and make a bite attack"),
 	RunningLeap("Running Leap", "With a 10-foot running start, the enemy can long jump up to 25 feet."),
