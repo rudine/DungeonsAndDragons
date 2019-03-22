@@ -2,6 +2,7 @@ package basic.monsters.specialabilities;
 
 public enum SpecialAbility {
 	
+	Amphibious("Amphibious", "Can breathe air and water"),
 	Amorphous("Amorphous", "Can move through a space as narrow as 1 inch wide without squeezing."),
 	Beserk("Beserk", "Whenever this enemy starts its turn with 40 hit points or fewer, roll a d6. On a 6, it goes berserk. On each of its turns while berserk, it attacks the nearest creature it can see. If no creature is near enough to move to and attack, the enemy attacks an object, with preference for an object smaller than itself. Once the enemy goes berserk, it continues to do so until it is destroyed or regains all its hit points. The enemies' creator, if within 60 ft. it, can try to calm it by speaking firmly and persuasively. The enemy must be able to hear its creator, who must take an action to make a DC 15 Charisma (Persuasion) check. If the check succeeds, it ceases being berserk. If it takes damage while still at 40 hit points or fewer, it might go berserk again."),
 	Brave("Brave", "Has advantage on saving throws against being frightened."),
@@ -22,8 +23,11 @@ public enum SpecialAbility {
 	Rampage("Rampage", "If this enemy reduces a creature to 0 hitpoints with a melee attack on its turn, the enemy can take a bonus attack to move up to half its speed and make a bite attack"),
 	RunningLeap("Running Leap", "With a 10-foot running start, the enemy can long jump up to 25 feet."),
 	SnowCamouflage("Snow Camouflage", "Has advantage on Dexterity(Stealth) checks made to hide in snowy terrain."),
+	SpeakFrogToad("Speak with Frogs and Toads", "This enemy can communicate simple concepts to frogs and toads when in speaks in it's language"),
 	SpiderClimb("Spider Climb", "Can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."),
-	StandingLeap("Standing Leap", "The enemy's long jump is up to 30ft. and its high jump is up to 15ft. with or without a running start");
+	StandingLeapLong30High15("Standing Leap", "The enemy's long jump is up to 30ft. and its high jump is up to 15ft. with or without a running start"),
+	StandingLeapLong20High10("Standing Leap", "The enemy's long jump is up to 20ft. and its high jump is up to 10ft. with or without a running start"),
+	SwampCamouflage("Swamp Camouflage", "The enemy has advantage on Dexterity (Stealth) checks made to hide in swampy terrain");
 	
 	private String name;
 	
