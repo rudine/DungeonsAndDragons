@@ -23,7 +23,8 @@ public class NightMare extends AbstractEnemy {
 		setActions();
 	}
 
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttackBuilder builder = new MeleeAttackBuilder();
 		MeleeAttack hooves = builder.setWeaponName("Hooves")//
 				.setToHit(6)//

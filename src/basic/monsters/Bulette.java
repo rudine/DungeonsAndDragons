@@ -26,7 +26,8 @@ public class Bulette extends AbstractEnemy {
 		setSpecialAttack();
 	}
 	
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttackBuilder builder = new MeleeAttackBuilder();
 		MeleeAttack bite = builder
 				.setWeaponName("Bite")//

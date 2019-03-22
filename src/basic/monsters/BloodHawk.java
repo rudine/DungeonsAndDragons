@@ -26,7 +26,8 @@ public class BloodHawk extends AbstractEnemy{
 		setAttacksOnAttackAction(1);
 	}
 	
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttack beak = new MeleeAttackBuilder()//
 				.setWeaponName("Beak")//
 				.setToHit(4)//

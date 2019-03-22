@@ -21,7 +21,8 @@ public class GiantBadger extends AbstractEnemy {
 		
 	}
 	
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttack bite = new MeleeAttackBuilder()//
 				.setWeaponName("Bite")//
 				.setToHit(3)//

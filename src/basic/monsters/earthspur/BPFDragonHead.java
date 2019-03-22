@@ -40,7 +40,8 @@ public class BPFDragonHead extends AbstractEnemy implements PreparesForNextTurn{
 		addToSkills(new SkillModifier(5, Athletics, STR), new SkillModifier(4, Intimidation, CHA));
 	}
 	
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
 		MeleeAttack burningMaul = meleeBuilder.setWeaponName("Burning maul") //
 					.setToHit(5)//

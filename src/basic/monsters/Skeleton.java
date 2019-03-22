@@ -29,7 +29,8 @@ public class Skeleton extends AbstractEnemy {
 		setSpeed("30 ft. 6 vakjes");
 	}
 
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
 		MeleeAttack shortsword = meleeBuilder.setWeaponName("Shortsword") //
 				.setToHit(5)//

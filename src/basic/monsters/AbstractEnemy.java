@@ -194,4 +194,6 @@ public abstract class AbstractEnemy {
 	public void setActions(Set<Action> actions) {
 		this.actions = actions;
 	}
+	
+	protected abstract void setAttacks();
 }

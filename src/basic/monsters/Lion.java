@@ -31,7 +31,8 @@ public class Lion extends AbstractEnemy {
 		addToSkills(new SkillModifier(5, Perception, WIS), new SkillModifier(4, Stealth, DEX));
 	}
 
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttackBuilder biteBuilder = new MeleeAttackBuilder();
 		MeleeAttack bite = biteBuilder.setWeaponName("Bite") //
 					.setToHit(5)//

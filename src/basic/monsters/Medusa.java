@@ -36,7 +36,8 @@ public class Medusa extends AbstractEnemy{
 		setAlignment(Alignment.LawfulEvil);
 	}
 	
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttack shortsword = new MeleeAttackBuilder()//
 				.setWeaponName("shortsword")//
 				.setToHit(5)

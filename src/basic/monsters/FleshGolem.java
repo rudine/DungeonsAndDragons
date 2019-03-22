@@ -44,7 +44,8 @@ public class FleshGolem extends AbstractEnemy implements DamageTypeCausesDisadva
 		setAttacksOnAttackAction(2);
 	}
 	
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttack slam = new MeleeAttackBuilder()//
 				.setWeaponName("slam")//
 				.setToHit(7)//

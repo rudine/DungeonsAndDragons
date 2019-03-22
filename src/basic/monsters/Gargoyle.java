@@ -21,7 +21,8 @@ public class Gargoyle extends AbstractEnemy {
 		addToSpecialAbilities(SpecialAbility.FalseAppearance);
 	}
 	
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttackBuilder biteBuilder = new MeleeAttackBuilder();
 		MeleeAttack bite = biteBuilder.setWeaponName("Bite")//
 				.setToHit(4)//

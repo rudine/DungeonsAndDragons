@@ -32,7 +32,8 @@ public class Bhun extends AbstractEnemy {
 		addToSkills(new SkillModifier(6, Athletics, STR), new SkillModifier(4, Intimidation, CHA));
 	}
 	
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
 		MeleeAttack handAxe = meleeBuilder.setWeaponName("Flint Hand Axe") //
 					.setToHit(6)//

@@ -29,7 +29,8 @@ public class Behir extends AbstractEnemy implements PreparesForNextTurn {
 		addToSkills(new SkillModifier(6, Skill.Perception, AbilityTypes.DEX), new SkillModifier(7, Skill.Stealth, AbilityTypes.DEX));
 	}
 
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttackBuilder biteBuilder = new MeleeAttackBuilder();
 		MeleeAttack bite = biteBuilder.setWeaponName("Bite")//
 				.setToHit(10)//

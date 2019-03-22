@@ -32,7 +32,8 @@ public class BPFGoatHead extends AbstractEnemy{
 		addToSkills(new SkillModifier(5, Athletics, STR), new SkillModifier(4, Intimidation, CHA));
 	}
 	
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
 		MeleeAttack pike = meleeBuilder.setWeaponName("Pike") //
 					.setToHit(5)//

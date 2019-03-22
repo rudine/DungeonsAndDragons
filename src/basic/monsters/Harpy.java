@@ -24,7 +24,8 @@ public class Harpy extends AbstractEnemy {
 		setActions();
 	}
 	
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttackBuilder clawBuilder = new MeleeAttackBuilder();
 		MeleeAttack claw = clawBuilder.setWeaponName("Claw")//
 				.setToHit(3)//

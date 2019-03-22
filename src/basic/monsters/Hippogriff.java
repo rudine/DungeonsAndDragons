@@ -26,7 +26,8 @@ public class Hippogriff extends AbstractEnemy {
 		setAttacksOnAttackAction(2);
 	}
 	
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttack beak = new MeleeAttackBuilder()//
 				.setWeaponName("beak")//
 				.setToHit(5)//

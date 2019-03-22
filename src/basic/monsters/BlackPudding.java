@@ -35,7 +35,8 @@ public class BlackPudding extends AbstractEnemy implements PreparesForNextTurn {
 		setHitpoints(hitpoints);
 	}
 
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttackBuilder podBuilder = new MeleeAttackBuilder();
 		MeleeAttack pseudoPod = podBuilder.setWeaponName("Pseudopod")//
 				.setToHit(5)//

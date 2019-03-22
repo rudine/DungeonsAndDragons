@@ -45,7 +45,8 @@ public class Yeti extends AbstractEnemy implements DamageTypeCausesDisadvantage,
 		setAlignment(Alignment.ChaoticEvil);
 	}
 	
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
 		MeleeAttack claw = meleeBuilder.setWeaponName("Claw")//
 				.setToHit(6)

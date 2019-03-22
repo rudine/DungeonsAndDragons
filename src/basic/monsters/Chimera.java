@@ -29,7 +29,8 @@ public class Chimera extends AbstractEnemy implements PreparesForNextTurn{
 		setSpecialAttacksOnAction(1);
 	}
 
-	private void setAttacks() {
+	@Override
+	protected void setAttacks() {
 		MeleeAttackBuilder biteBuilder = new MeleeAttackBuilder();
 		MeleeAttack bite = biteBuilder.setWeaponName("Bite") //
 					.setToHit(7)//
