@@ -278,7 +278,8 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 
 		if (totalAttacksFromUses < attacksOnAttackAction)
 			throw new IllegalArgumentException("De som van de uses van attacks on attack"
-					+ " action is kleiner dan attacks on attack action, er is ergens iets " + "niet goed ingevuld");
+					+ " action is kleiner dan attacks on attack action, er is ergens iets " 
+					+ "niet goed ingevuld");
 		return false;
 	}
 

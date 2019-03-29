@@ -11,13 +11,15 @@ import basic.services.StandardRulesService;
 import gui.components.AbstractFight;
 import gui.components.EnemyPane;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
+import javafx.scene.text.Text;
 
 public class DeepGuardianFight extends AbstractFight {
 	private List<AbstractEnemy> deepGuardians;
 	private List<EnemyPane<AbstractEnemy>> enemyPanes;
 	private int numberOfFrogs = 2;
 	private int numberOfBullywugs = 4;
-	
 	
 	@Override
 	protected String setFightTitle() {
@@ -30,7 +32,17 @@ public class DeepGuardianFight extends AbstractFight {
 			enemypane.refreshAttackPanes(false);
 			enemypane.refreshHeader();
 			enemypane.refreshCheckBoxes();
+			if(enemypane.getEnemy() instanceof GiantFrog) {
+				manageSwallowAcidDamage(enemypane);
+			}
 		}
+	}
+	
+	private void manageSwallowAcidDamage(EnemyPane<AbstractEnemy> frogPane) {
+		GiantFrog frog = (GiantFrog) (frogPane.getEnemy());
+		ObservableList<Node> additionalTextPaneNodes = frogPane.getAdditionalTextPane().getChildren();
+		additionalTextPaneNodes.clear();
+		additionalTextPaneNodes.add(new Text("Acid damage from swallow (if applicable): " + frog.getSwallowDamage()));
 	}
 
 	@Override
@@ -49,7 +61,7 @@ public class DeepGuardianFight extends AbstractFight {
 		for(int i = 0; i < numberOfFrogs; i++) {
 			GiantFrog frog = new GiantFrog();
 			deepGuardians.add(frog);
-			EnemyPane<AbstractEnemy> pane = new EnemyPane<AbstractEnemy>(frog);
+			EnemyPane<AbstractEnemy> pane = new EnemyPane<AbstractEnemy>(frog, "");
 			enemyPanes.add(pane);
 			basePane.add(pane, i, 1);
 		}

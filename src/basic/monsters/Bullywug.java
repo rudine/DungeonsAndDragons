@@ -23,7 +23,7 @@ public class Bullywug extends AbstractEnemy {
 		addToSkills(new SkillModifier(3, Skill.Stealth, AbilityTypes.DEX));
 		addToSpecialAbilities(SpecialAbility.Amphibious, SpecialAbility.SpeakFrogToad, SpecialAbility.SwampCamouflage, SpecialAbility.StandingLeapLong20High10);
 		setAttacks();
-		setAttacksOnAttackAction(2);
+		setAttacksOnAttackAction(1); // TODO klopt niet helemaal, er zijn wel 2 attacks, maar die met de spear is met 2 handen of met 1 hand
 	}
 
 	@Override
@@ -32,16 +32,21 @@ public class Bullywug extends AbstractEnemy {
 				.setWeaponName("Bite")//
 				.setToHit(3)//
 				.addDamageComponent(new DamageComponent(1, 4, 1, DamageType.BLUDGEONING))
-				.setUsesOnMultiAttack(1)//
 				.build();
 		addToAvailableAttacks(bite);
 		MeleeAttack spear = new MeleeAttackBuilder()//
-				.setWeaponName("Spear")//
+				.setWeaponName("Spear (one hand)")//
 				.setToHit(3)//
-				.addDamageComponent(new DamageComponent(1, 6, 1, DamageType.PIERCING))
-				.addDamageComponent(new DamageComponent(1, 8, 1, DamageType.PIERCING))
-				.setDescription("Melee or ranged; range 20/60 ft. Second piercing is with 2 hands")
+				.addDamageComponent(new DamageComponent(1, 6, 1, DamageType.PIERCING))//
+				.setDescription("in addition to the bite")//
 				.build();
 		addToAvailableAttacks(spear);
+		MeleeAttack spearTwoHands = new MeleeAttackBuilder()//
+				.setWeaponName("Spear (two hands)")//
+				.setToHit(3)//
+				.addDamageComponent(new DamageComponent(1, 8, 1, DamageType.PIERCING))//
+				.setDescription("replaces the attack 1 one hand") //
+				.build();
+		addToAvailableAttacks(spearTwoHands);
 	}
 }
