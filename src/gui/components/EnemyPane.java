@@ -205,8 +205,11 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 
 		disadvantageBox = new CheckBox("Has disadvantage on attacks");
 		disadvantageBox.setOnAction(e -> enemy.setDisadvantageOnAttacks(!enemy.isDisadvantageOnAttacks()));
+		
+		Button rerollAttacks = new Button("Reroll attacks");
+		rerollAttacks.setOnAction(e -> refreshAttackPanes(false));
 
-		checkboxes.getChildren().addAll(advantageBox, disadvantageBox);
+		checkboxes.getChildren().addAll(advantageBox, disadvantageBox, rerollAttacks);
 		add(checkboxes, 0, 6);
 	}
 
