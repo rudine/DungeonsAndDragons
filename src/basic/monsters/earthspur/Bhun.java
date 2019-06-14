@@ -22,7 +22,7 @@ public class Bhun extends AbstractEnemy {
 	public Bhun() {
 		setAlive(true);
 		setAC(15);
-		setHitpoints(DiceService.throwD8(9) + 27);
+		setHitpointsOnCreation(DiceService.throwD8(9) + 27);
 		setSpeed("30 feet, 6 vakjes || adv on poison saves");
 		setAbilityScores(new AbilityScores(18, 16, 16, 10, 12, 15));
 		addToSpecialAbilities(SpecialAbility.Brave);

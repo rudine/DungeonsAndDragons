@@ -16,7 +16,7 @@ public class GiantFrog extends AbstractEnemy {
 	public GiantFrog() {
 		setSize(Size.Medium);
 		setAC(11);
-		setHitpoints(DiceService.throwD8(4));
+		setHitpointsOnCreation(DiceService.throwD8(4));
 		setSpeed("Swim 30ft (6v), Walk 30ft (6v)");
 		setAbilityScores(new AbilityScores(12, 13, 11, 2, 10, 3));
 		addToSpecialAbilities(SpecialAbility.Amphibious, SpecialAbility.StandingLeapLong20High10);

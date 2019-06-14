@@ -13,7 +13,7 @@ public class Gargoyle extends AbstractEnemy {
 	
 	public Gargoyle() {
 		setAC(15);
-		setHitpoints(DiceService.throwD8(7) + 21);
+		setHitpointsOnCreation(DiceService.throwD8(7) + 21);
 		setSpeed("30 ft., fly 60 ft.");
 		setAbilityScores(new AbilityScores(15, 11, 16, 6, 11, 7));
 		setAttacksOnAttackAction(2);

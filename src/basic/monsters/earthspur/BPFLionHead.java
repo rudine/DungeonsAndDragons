@@ -22,7 +22,7 @@ public class BPFLionHead extends AbstractEnemy {
 	public BPFLionHead(){
 		setAlive(true);
 		setAC(15);
-		setHitpoints(DiceService.throwD8(9) + 18);
+		setHitpointsOnCreation(DiceService.throwD8(9) + 18);
 		setSpeed("30 feet, 6 vakjes");
 		setAbilityScores(new AbilityScores(16, 16, 14, 10, 12, 15));
 		addToSpecialAbilities(SpecialAbility.Brave);

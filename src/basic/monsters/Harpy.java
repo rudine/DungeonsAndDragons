@@ -16,7 +16,7 @@ public class Harpy extends AbstractEnemy {
 	public Harpy() {
 		setAlive(true);
 		setAC(11);
-		setHitpoints(DiceService.throwD8(7) + 7);
+		setHitpointsOnCreation(DiceService.throwD8(7) + 7);
 		setSpeed("20ft, fly 40ft");
 		setAbilityScores(new AbilityScores(12, 13, 12, 7, 10, 13));
 		setAttacksOnAttackAction(2);

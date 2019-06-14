@@ -19,7 +19,7 @@ public class Thug extends AbstractEnemy {
 	public Thug() {
 		setAlive(true);
 		setAC(11);
-		setHitpoints(DiceService.throwD8(5) + 10);
+		setHitpointsOnCreation(DiceService.throwD8(5) + 10);
 		setSpeed("30 feet, 6 vakjes");
 		setAbilityScores(new AbilityScores(15, 11, 14, 10, 10, 11));
 		setAttacks();

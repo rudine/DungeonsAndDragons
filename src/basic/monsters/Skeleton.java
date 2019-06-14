@@ -20,7 +20,7 @@ public class Skeleton extends AbstractEnemy {
 		setAC(13);
 		setAlive(true);
 		setAbilityScores(new AbilityScores(10, 14, 15, 6, 8, 5));
-		setHitpoints(throwD8(2) + 4);
+		setHitpointsOnCreation(throwD8(2) + 4);
 		setAttacks();
 		setAttacksOnAttackAction(1);
 		setSize(Size.Medium);

@@ -17,7 +17,7 @@ public class Hippogriff extends AbstractEnemy {
 	public Hippogriff() {
 		setSize(Size.Large);
 		setAC(11);
-		setHitpoints(DiceService.throwD10(3) + 3);
+		setHitpointsOnCreation(DiceService.throwD10(3) + 3);
 		setSpeed("40ft. 8v, fly 60ft. 12v");
 		setAbilityScores(new AbilityScores(17, 13, 13, 2, 12, 8));
 		addToSkills(new SkillModifier(5, Skill.Perception, AbilityTypes.WIS));

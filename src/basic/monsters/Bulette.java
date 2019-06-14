@@ -16,7 +16,7 @@ public class Bulette extends AbstractEnemy {
 
 	public Bulette() {
 		setAC(17);
-		setHitpoints(DiceService.throwD10(9) + 45);
+		setHitpointsOnCreation(DiceService.throwD10(9) + 45);
 		setSpeed("40ft, burrow 40ft");
 		setAbilityScores(new AbilityScores(19, 11, 21, 2, 10, 5));
 		addToSpecialAbilities(SpecialAbility.StandingLeapLong30High15);

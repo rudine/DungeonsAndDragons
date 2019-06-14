@@ -22,7 +22,7 @@ public class Lion extends AbstractEnemy {
 	public Lion() {
 		setAlive(true);
 		setAC(12);
-		setHitpoints(DiceService.throwD10(4) + 4);
+		setHitpointsOnCreation(DiceService.throwD10(4) + 4);
 		setSpeed("50 feet, 10 vakjes");
 		setAbilityScores(new AbilityScores(17, 15, 13, 3, 12, 8));
 		addToSpecialAbilities(KeenSmell, Pounce, RunningLeap, PackTactics);

@@ -13,10 +13,10 @@ import basic.ruleobjects.Range;
 import basic.ruleobjects.SavingThrow;
 import basic.services.DiceService;
 
-public class GnollPackLord extends Gnoll implements PreparesForNextTurn {
+public class GnollPacklord extends Gnoll implements PreparesForNextTurn {
 
-	public GnollPackLord() {
-		setHitpoints(DiceService.throwD8(9) + 9);
+	public GnollPacklord() {
+		setHitpointsOnCreation(DiceService.throwD8(9) + 9);
 		setAbilityScores(new AbilityScores(16, 14, 13, 8, 11, 9));
 		getAvailableAttacks().clear();
 		setAttacks();

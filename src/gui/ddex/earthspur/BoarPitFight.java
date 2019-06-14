@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import basic.monsters.AbstractEnemy;
 import basic.monsters.Thug;
 import basic.monsters.Veteran;
-import basic.monsters.earthspur.BPFDragonHead;
+import basic.monsters.earthspur.BPFDragonhead;
 import basic.monsters.earthspur.BPFGoatHead;
 import basic.monsters.earthspur.BPFLionHead;
 import basic.monsters.interfaces.PreparesForNextTurn;
@@ -38,7 +38,7 @@ public class BoarPitFight extends Application {
 		fighters = new ArrayList<>();
 		fighterPanes = new ArrayList<>();
 		
-		BPFDragonHead dragonHead = new BPFDragonHead();
+		BPFDragonhead dragonHead = new BPFDragonhead();
 		fighters.add(dragonHead);
 		BPFGoatHead goatHead = new BPFGoatHead();
 		fighters.add(goatHead);

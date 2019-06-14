@@ -21,7 +21,7 @@ public class Medusa extends AbstractEnemy{
 
 	public Medusa() {
 		setAC(15);
-		setHitpoints(127);
+		setHitpointsOnCreation(127);
 		setSpeed("30 ft. 6 vakjes");
 		setAbilityScores(new AbilityScores(10, 15, 16, 12, 13, 15));
 		addToSkills(new SkillModifier(5, Skill.Deception, AbilityTypes.CHA));

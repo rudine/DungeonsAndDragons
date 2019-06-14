@@ -22,6 +22,7 @@ public abstract class AbstractEnemy {
 	private boolean advantageOnAttacks;
 	private boolean disadvantageOnAttacks;
 	private int hitpoints;
+	private int hitpointsAtCreation;
 	private boolean alive = true;
 	private int AC;
 	private String speed;
@@ -36,16 +37,15 @@ public abstract class AbstractEnemy {
 	private Size size = Size.Medium;
 	private MonsterType monsterType = MonsterType.humanoid;
 	private Alignment alignment = Alignment.Neutral;
-	private Set<Action> actions = new HashSet<>(); 
+	private Set<Action> actions = new HashSet<>();
 	
 	public void doDamage(int damage, DamageType type) {
 		setHitpoints(getHitpoints() - damage);
-		
-		if (getHitpoints() <= 0) {
+
+		if (getHitpoints() <= 0) 
 			setAlive(false);
-		}
 	}
-	
+
 	public AbilityScores getAbilityScores() {
 		return abilityScores;
 	}
@@ -77,6 +77,11 @@ public abstract class AbstractEnemy {
 	public void setHitpoints(int hitpoints) {
 		this.hitpoints = hitpoints;
 	}
+	
+	public void setHitpointsOnCreation(int hitpoints) {
+		this.hitpoints = hitpoints;
+		this.hitpointsAtCreation = hitpoints;
+	}
 
 	public boolean isAlive() {
 		return alive;
@@ -105,13 +110,12 @@ public abstract class AbstractEnemy {
 	public Set<SpecialAbility> getSpecialAbilities() {
 		return specialAbilities;
 	}
-	
+
 	public void addToSpecialAbilities(SpecialAbility... skill) {
 		specialAbilities.addAll(Arrays.asList(skill));
 	}
 
-	public Set<Attack> getAvailableAttacks()
-	{	
+	public Set<Attack> getAvailableAttacks() {
 		return availableAttacks;
 	}
 
@@ -186,7 +190,7 @@ public abstract class AbstractEnemy {
 	public void addToActions(Action action) {
 		this.actions.add(action);
 	}
-	
+
 	public Set<Action> getActions() {
 		return actions;
 	}
@@ -194,6 +198,35 @@ public abstract class AbstractEnemy {
 	public void setActions(Set<Action> actions) {
 		this.actions = actions;
 	}
-	
+
+	public int getHitpointsAtCreation() {
+		return hitpointsAtCreation;
+	}
+
 	protected abstract void setAttacks();
+
+	public String getVitalityDescription() {
+		double percentage = getVitalityPercentage();
+		
+		if (getHitpoints() == 1)
+			return "hanging on by a thread";
+		else if (percentage > 0 && percentage <= 25)
+			return "rough";
+		else if (percentage > 25 && percentage <= 50)
+			return "bloodied";
+		else if (percentage > 50 && percentage <= 75)
+			return "wounded";
+		else if (percentage > 75  && percentage <= 90)
+			return "hurt";
+		else if (percentage > 90 && percentage < 100)
+			return "unimpressed";
+		else
+			return "";
+	}
+	
+	public double getVitalityPercentage() {
+		double hitpoints = (double)getHitpoints();
+		double starthitpoints = (double)getHitpointsAtCreation();
+		return (hitpoints/starthitpoints) * 100.0;
+	}
 }

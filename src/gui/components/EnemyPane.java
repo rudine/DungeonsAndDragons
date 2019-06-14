@@ -11,6 +11,7 @@ import basic.monsters.interfaces.DamageTypeCausesDisadvantage;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.DamageType;
 import basic.services.DamageService;
+import basic.services.StringUtil;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -44,7 +45,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 
 	public EnemyPane(T enemy) {
 		this.enemy = enemy;
-		hitpointText = new Text("Hitpoints: " + enemy.getHitpoints());
+		setHitpointText();
 		aliveText = getAliveText();
 		addTitlePane();
 		addDamagePane();
@@ -67,7 +68,8 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		titlePane = new HBox(10);
 		titlePane.setPadding(insets);
 		TextField idField = new TextField();
-		Text name = new Text(enemy.getClass().getSimpleName());
+		String enemyName = StringUtil.convertCamelCase(enemy.getClass().getSimpleName());
+		Text name = new Text(enemyName);
 		name.setFont(titleFont);
 		name.setFill(Color.MAROON);
 		titlePane.getChildren().addAll(name, new Text("AC: " + enemy.getAC()), aliveText, hitpointText, idField);
@@ -215,7 +217,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		titlePane.getChildren().removeAll(aliveText, hitpointText);
 
 		aliveText = getAliveText();
-		hitpointText = new Text("Hitpoints: " + enemy.getHitpoints());
+		setHitpointText();
 
 		titlePane.getChildren().add(2, aliveText);
 		titlePane.getChildren().add(3, hitpointText);
@@ -229,9 +231,13 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		damageTypesBox.setValue(null);
 	}
 
+	protected void setHitpointText() {
+		hitpointText = new Text("HP: " + enemy.getHitpoints() + " (" + ((int)Math.ceil(enemy.getVitalityPercentage())) + "%) " + enemy.getVitalityDescription());
+	}
+
 	public void refreshHeader() {
 		titlePane.getChildren().removeAll(hitpointText, aliveText);
-		hitpointText = new Text("Hitpoints: " + enemy.getHitpoints());
+		setHitpointText();
 		aliveText = getAliveText();
 		titlePane.getChildren().add(2, aliveText);
 		titlePane.getChildren().add(3, hitpointText);

@@ -30,13 +30,10 @@ public class FleshGolem extends AbstractEnemy implements DamageTypeCausesDisadva
 	
 	private boolean beserk;
 	
-	private int hitpointsAtCreation;
-
 	public FleshGolem() {
 		setSize(Size.Large);
 		setAC(11);
-		hitpointsAtCreation = DiceService.throwD8(11) + 44;
-		setHitpoints(hitpointsAtCreation);
+		setHitpointsOnCreation(DiceService.throwD8(11) + 44);
 		setSpeed("30ft. 6v");
 		setAbilityScores(new AbilityScores(19, 9, 18, 6, 10, 5));
 		addToSpecialAbilities(Beserk, FearOfFire, ImmutableForm, LightningAbsorption, MagicResistance, MagicWeapons);
@@ -78,7 +75,7 @@ public class FleshGolem extends AbstractEnemy implements DamageTypeCausesDisadva
 			if(DiceService.throwD6(1) == 6) 
 				setBeserk(true);
 		}
-		else if(getHitpoints() == hitpointsAtCreation && beserk == true) {
+		else if(getHitpoints() == getHitpointsAtCreation() && beserk == true) {
 			setBeserk(false);
 		}
 		

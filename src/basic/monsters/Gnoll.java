@@ -15,7 +15,7 @@ public class Gnoll extends AbstractEnemy {
 	public Gnoll() {
 		setAlive(true);
 		setAC(15);
-		setHitpoints(DiceService.throwD8(5));
+		setHitpointsOnCreation(DiceService.throwD8(5));
 		setSpeed("30 ft. 6 vakjes");
 		setAbilityScores(new AbilityScores(14, 12, 11, 6, 10, 7));
 		addToSpecialAbilities(SpecialAbility.Rampage);

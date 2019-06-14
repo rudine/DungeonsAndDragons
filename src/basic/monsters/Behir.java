@@ -19,7 +19,7 @@ public class Behir extends AbstractEnemy implements PreparesForNextTurn {
 
 	public Behir() {
 		setAC(17);
-		setHitpoints(DiceService.throwD12(16) + 64);
+		setHitpointsOnCreation(DiceService.throwD12(16) + 64);
 		setSpeed("50 ft, 10 vakjes. Climb 40ft. 8 vakjes");
 		setAbilityScores(new AbilityScores(23, 16, 18, 7, 14, 12));
 		setAttacks();

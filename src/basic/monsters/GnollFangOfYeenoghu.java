@@ -10,7 +10,7 @@ import basic.services.DiceService;
 public class GnollFangOfYeenoghu extends Gnoll {
 	
 	public GnollFangOfYeenoghu() {
-		setHitpoints(DiceService.throwD8(10) + 20);
+		setHitpointsOnCreation(DiceService.throwD8(10) + 20);
 		setAbilityScores(new AbilityScores(17, 15, 15, 10, 11, 13));
 		setAC(14);
 		getAvailableAttacks().clear();

@@ -20,7 +20,7 @@ public class Chimera extends AbstractEnemy implements PreparesForNextTurn{
 	public Chimera() {
 		setAlive(true);
 		setAC(14);
-		setHitpoints(DiceService.throwD10(12) + 48);
+		setHitpointsOnCreation(DiceService.throwD10(12) + 48);
 		setSpeed("30 feet, 6 vakjes. Fly 60 ft, 12 vakjes");
 		setAbilityScores(new AbilityScores(19, 11, 19, 3, 14, 10));
 		setAttacks();

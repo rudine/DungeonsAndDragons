@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import basic.monsters.AbstractEnemy;
 import basic.monsters.Gargoyle;
 import basic.monsters.Medusa;
-import basic.monsters.NightMare;
+import basic.monsters.Nightmare;
 import basic.services.StandardRulesService;
 import gui.components.AbstractFight;
 import gui.components.EnemyPane;
@@ -17,7 +17,7 @@ public class FallingStoneMineFights extends AbstractFight {
 	private List<Gargoyle> gargoyles;
 	private List<EnemyPane<Gargoyle>> gargoylePanes;
 	private EnemyPane<Medusa> medusaPane;
-	private EnemyPane<NightMare> nightmarePane;
+	private EnemyPane<Nightmare> nightmarePane;
 	private int numberOfGargoyles = 4;
 	private boolean includeMedusaAndNightmare = false;
 
@@ -44,7 +44,7 @@ public class FallingStoneMineFights extends AbstractFight {
 			medusaPane = new EnemyPane<Medusa>(new Medusa());
 			basePane.add(medusaPane, 0, 1);
 
-			nightmarePane = new EnemyPane<NightMare>(new NightMare());
+			nightmarePane = new EnemyPane<Nightmare>(new Nightmare());
 			basePane.add(nightmarePane, 1, 1);
 		}
 	}
@@ -54,7 +54,7 @@ public class FallingStoneMineFights extends AbstractFight {
 		List<Integer> dextMods = gargoyles.stream().map(h -> h.getAbilityScores().getDexterityModifier())
 				.collect(Collectors.toList());
 		dextMods.add(new Medusa().getAbilityScores().getDexterityModifier());
-		dextMods.add(new NightMare().getAbilityScores().getDexterityModifier());
+		dextMods.add(new Nightmare().getAbilityScores().getDexterityModifier());
 		dmInitiative = StandardRulesService.determineDMInitiative(dextMods);
 	}
 

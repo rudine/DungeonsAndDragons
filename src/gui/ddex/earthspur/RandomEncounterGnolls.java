@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import basic.monsters.Gnoll;
 import basic.monsters.GnollFangOfYeenoghu;
-import basic.monsters.GnollPackLord;
+import basic.monsters.GnollPacklord;
 import basic.services.StandardRulesService;
 import gui.components.EnemyPane;
 import javafx.application.Application;
@@ -75,9 +75,9 @@ public class RandomEncounterGnolls extends Application {
 	}
 
 	protected void addPackLord() {
-		GnollPackLord packLord = new GnollPackLord();
+		GnollPacklord packLord = new GnollPacklord();
 		gnolls.add(packLord);
-		EnemyPane<GnollPackLord> packLordPane = new EnemyPane<>(packLord);
+		EnemyPane<GnollPacklord> packLordPane = new EnemyPane<>(packLord);
 		gnollPanes.add(packLordPane);
 		basePane.add(packLordPane, 2, 2);
 	}

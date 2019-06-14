@@ -22,7 +22,7 @@ public class BlackPudding extends AbstractEnemy implements PreparesForNextTurn {
 	
 	public BlackPudding() {
 		setAC(7);
-		setHitpoints(DiceService.throwD10(10) + 30);
+		setHitpointsOnCreation(DiceService.throwD10(10) + 30);
 		setSpeed("20ft. 4 vakjes, Climb 20ft. 4 vakjes");
 		setAbilityScores(new AbilityScores(16, 5, 16, 1, 6, 1));
 		setAttacksOnAttackAction(1);
