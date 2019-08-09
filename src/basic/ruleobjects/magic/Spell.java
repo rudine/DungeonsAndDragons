@@ -1,22 +1,24 @@
 package basic.ruleobjects.magic;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Spell {
+import basic.ruleobjects.DamageType;
+
+public abstract class Spell {
 	
 	private CastingTime castingTime;
 	private String name;
 	private String description;
-	private int range;
-	private Map<SpellComponent, String> spellComponents;
-	private boolean concentration;
-	private int activeRounds;
+	private String range;
+	private Set<SpellComponent> spellComponents;
+	private boolean concentration = false;
 	private int durationRounds;
 	private int level;
+	private DamageType damageType;
 	
 	public Spell() {
-		spellComponents = new HashMap<>();
+		spellComponents = new HashSet<>();
 	}
 	
 	public CastingTime getCastingTime() {
@@ -42,23 +44,25 @@ public class Spell {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	protected abstract String createDescription();
 
-	public int getRange() {
+	public String getRange() {
 		return range;
 	}
 
-	public void setRange(int range) {
+	public void setRange(String range) {
 		this.range = range;
 	}
 
-	public Map<SpellComponent, String> getSpellComponents() {
+	public Set<SpellComponent> getSpellComponents() {
 		return spellComponents;
 	}
 
-	public void setSpellComponents(Map<SpellComponent, String> spellComponents) {
+	public void setSpellComponents(Set<SpellComponent> spellComponents) {
 		this.spellComponents = spellComponents;
 	}
-
+	
 	public boolean isConcentration() {
 		return concentration;
 	}
@@ -83,16 +87,17 @@ public class Spell {
 		this.level = level;
 	}
 
-	public int getActiveRounds() {
-		return activeRounds;
+	public DamageType getDamageType() {
+		return damageType;
 	}
 
-	public void setActiveRounds(int activeRounds) {
-		this.activeRounds = activeRounds;
+	public void setDamageType(DamageType damageType) {
+		this.damageType = damageType;
 	}
 
 	@Override
 	public String toString() {
+		String level = this.level == 0 ? "cantrip" : "" + this.level;
 		return "" + name + " - level: " + level + " CT: " + castingTime;
 	}
 }
