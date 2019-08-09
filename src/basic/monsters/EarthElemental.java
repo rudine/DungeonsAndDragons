@@ -1,12 +1,14 @@
 package basic.monsters;
 
 import static basic.ruleobjects.DamageType.BLUDGEONING;
+import static basic.ruleobjects.DamageType.FIRE;
 
 import basic.attack.DamageComponent;
 import basic.attack.types.MeleeAttack;
 import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.AbilityScores;
+import basic.ruleobjects.DamageType;
 import basic.ruleobjects.Size;
 import basic.services.DiceService;
 
@@ -32,5 +34,19 @@ public class EarthElemental extends AbstractEnemy {
 				.addDamageComponent(new DamageComponent(2, 8, 5, BLUDGEONING))
 				.build();
 		addToAvailableAttacks(slam);
+	}
+	
+	@Override
+	public void doDamage(int damage, DamageType type) {
+		if(type == DamageType.THUNDER) {
+			damage = damage * 2;
+		}
+		else if (type == DamageType.BLUDGEONING || type == DamageType.PIERCING || type == DamageType.SLASHING) {
+			damage = damage / 2;
+		}
+		else if (type == DamageType.POISON) {
+			return;
+		}
+		super.doDamage(damage, type);
 	}
 }
