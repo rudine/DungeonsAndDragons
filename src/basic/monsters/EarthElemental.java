@@ -1,7 +1,6 @@
 package basic.monsters;
 
 import static basic.ruleobjects.DamageType.BLUDGEONING;
-import static basic.ruleobjects.DamageType.FIRE;
 
 import basic.attack.DamageComponent;
 import basic.attack.types.MeleeAttack;
