@@ -3,6 +3,7 @@ package basic.ruleobjects.magic.spells;
 import basic.ruleobjects.magic.CastingTime;
 import basic.ruleobjects.magic.SchoolOfMagic;
 import basic.ruleobjects.magic.Spell;
+import basic.ruleobjects.magic.SpellComponentService;
 
 public class Blink extends Spell {
 

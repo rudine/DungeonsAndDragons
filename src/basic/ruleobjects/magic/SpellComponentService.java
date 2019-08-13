@@ -1,9 +1,7 @@
-package basic.ruleobjects.magic.spells;
+package basic.ruleobjects.magic;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import basic.ruleobjects.magic.SpellComponent;
 
 public class SpellComponentService {
 

@@ -7,6 +7,7 @@ import basic.ruleobjects.DamageType;
 import basic.ruleobjects.magic.CastingTime;
 import basic.ruleobjects.magic.SchoolOfMagic;
 import basic.ruleobjects.magic.Spell;
+import basic.ruleobjects.magic.SpellComponentService;
 import basic.services.DiceService;
 
 public class MagicMissile extends Spell implements DamagingSpell {
