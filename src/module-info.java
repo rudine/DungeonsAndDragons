@@ -13,7 +13,9 @@ module dungeonsAndDragons {
 	
 	exports basic.ruleobjects to gui.components;
 	exports basic.ruleobjects.modifiers to basic.monsters;
+	exports basic.ruleobjects.magic to gui.components;
 	exports basic.monsters to gui.components.enemyspecific;
+	exports basic.monsters.earthspur to gui.components.enemyspecific;
 	exports basic.monsters.specialabilities to basic.monsters;
 	exports basic.attack.types to basic.monsters;
 	exports basic.attack to basic.monsters;
