@@ -1,6 +1,7 @@
 package basic.ruleobjects.magic.spells;
 
 import basic.ruleobjects.magic.CastingTime;
+import basic.ruleobjects.magic.SchoolOfMagic;
 import basic.ruleobjects.magic.Spell;
 
 public class Blink extends Spell {
@@ -13,6 +14,7 @@ public class Blink extends Spell {
 		setLevel(3);
 		setDurationRounds(10);
 		setSpellComponents(SpellComponentService.getVerbalSomatic());
+		setSchool(SchoolOfMagic.Transmutation);
 	}
 
 	@Override

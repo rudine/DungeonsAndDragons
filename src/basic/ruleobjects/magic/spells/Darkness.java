@@ -1,6 +1,7 @@
 package basic.ruleobjects.magic.spells;
 
 import basic.ruleobjects.magic.CastingTime;
+import basic.ruleobjects.magic.SchoolOfMagic;
 import basic.ruleobjects.magic.Spell;
 
 public class Darkness extends Spell {
@@ -14,6 +15,7 @@ public class Darkness extends Spell {
 		setDurationRounds(100);
 		setSpellComponents(SpellComponentService.getVerbalMaterial());
 		setConcentration(true);
+		setSchool(SchoolOfMagic.Evocation);
 	}
 	
 	@Override

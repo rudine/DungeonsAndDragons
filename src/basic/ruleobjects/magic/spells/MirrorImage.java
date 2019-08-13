@@ -1,6 +1,7 @@
 package basic.ruleobjects.magic.spells;
 
 import basic.ruleobjects.magic.CastingTime;
+import basic.ruleobjects.magic.SchoolOfMagic;
 import basic.ruleobjects.magic.Spell;
 
 public class MirrorImage extends Spell {
@@ -13,6 +14,7 @@ public class MirrorImage extends Spell {
 		setLevel(2);
 		setDurationRounds(10);
 		setSpellComponents(SpellComponentService.getVerbalSomatic());
+		setSchool(SchoolOfMagic.Illusion);
 	}
 	
 	@Override

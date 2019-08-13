@@ -2,6 +2,7 @@ package basic.ruleobjects.magic.spells;
 
 import basic.ruleobjects.DamageType;
 import basic.ruleobjects.magic.CastingTime;
+import basic.ruleobjects.magic.SchoolOfMagic;
 import basic.ruleobjects.magic.Spell;
 import basic.services.DiceService;
 
@@ -16,6 +17,7 @@ public class RayOfFrost extends Spell implements DamagingSpell {
 		setDurationRounds(0);
 		setSpellComponents(SpellComponentService.getVerbalSomatic());
 		setDamageType(DamageType.COLD);
+		setSchool(SchoolOfMagic.Evocation);
 	}
 
 	@Override

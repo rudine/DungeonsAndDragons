@@ -5,6 +5,7 @@ import java.util.List;
 
 import basic.ruleobjects.DamageType;
 import basic.ruleobjects.magic.CastingTime;
+import basic.ruleobjects.magic.SchoolOfMagic;
 import basic.ruleobjects.magic.Spell;
 import basic.services.DiceService;
 
@@ -19,6 +20,7 @@ public class MagicMissile extends Spell implements DamagingSpell {
 		setDurationRounds(0);
 		setSpellComponents(SpellComponentService.getVerbalSomatic());
 		setDamageType(DamageType.FORCE);
+		setSchool(SchoolOfMagic.Evocation);
 	}
 
 	@Override

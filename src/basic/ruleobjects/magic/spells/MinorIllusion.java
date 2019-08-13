@@ -1,6 +1,7 @@
 package basic.ruleobjects.magic.spells;
 
 import basic.ruleobjects.magic.CastingTime;
+import basic.ruleobjects.magic.SchoolOfMagic;
 import basic.ruleobjects.magic.Spell;
 
 public class MinorIllusion extends Spell {
@@ -13,6 +14,7 @@ public class MinorIllusion extends Spell {
 		setLevel(0);
 		setDurationRounds(10);
 		setSpellComponents(SpellComponentService.getSomaticMaterial());
+		setSchool(SchoolOfMagic.Illusion);
 	}
 
 	@Override

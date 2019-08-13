@@ -1,6 +1,7 @@
 package basic.ruleobjects.magic.spells;
 
 import basic.ruleobjects.magic.CastingTime;
+import basic.ruleobjects.magic.SchoolOfMagic;
 import basic.ruleobjects.magic.Spell;
 
 public class Shield extends Spell {
@@ -13,6 +14,7 @@ public class Shield extends Spell {
 		setLevel(1);
 		setDurationRounds(1);
 		setSpellComponents(SpellComponentService.getVerbalSomatic());
+		setSchool(SchoolOfMagic.Abjuration);
 	}
 	
 	@Override

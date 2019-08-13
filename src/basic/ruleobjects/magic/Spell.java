@@ -16,6 +16,7 @@ public abstract class Spell {
 	private int durationRounds;
 	private int level;
 	private DamageType damageType;
+	private SchoolOfMagic school;
 	
 	public Spell() {
 		spellComponents = new HashSet<>();
@@ -99,5 +100,13 @@ public abstract class Spell {
 	public String toString() {
 		String level = this.level == 0 ? "cantrip" : "" + this.level;
 		return "" + name + " - level: " + level + " CT: " + castingTime;
+	}
+
+	public SchoolOfMagic getSchool() {
+		return school;
+	}
+
+	public void setSchool(SchoolOfMagic school) {
+		this.school = school;
 	}
 }
