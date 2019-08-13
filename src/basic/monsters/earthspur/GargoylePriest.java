@@ -25,22 +25,28 @@ public class GargoylePriest extends Gargoyle {
 	
 	private int cantrips = 3;
 	
-	private List<Spell> spells = new ArrayList<>();
+	private List<Spell> spellList = new ArrayList<>();
 
 	public GargoylePriest() {
 		fillSpellList();
 	}
 	
 	private void fillSpellList() {
-		spells.add(new RayOfFrost());
-		spells.add(new MinorIllusion());
-		spells.add(new ShockingGrasp());
-		spells.add(new Blink());
-		spells.add(new Darkness());
-		spells.add(new MirrorImage());
-		spells.add(new Shield());
-		spells.add(new FalseLife());
-		spells.add(new MagicMissile());
+		spellList.add(new RayOfFrost());
+		spellList.add(new MinorIllusion());
+		spellList.add(new ShockingGrasp());
+		spellList.add(new Blink());
+		spellList.add(new Darkness());
+		spellList.add(new MirrorImage());
+		spellList.add(new Shield());
+		spellList.add(new FalseLife());
+		spellList.add(new MagicMissile());
+	}
+	
+	public List<Spell> getSpellList(){
+		if(spellList.isEmpty())
+			throw new RuntimeException("Spell list not initialized");
+		return spellList;
 	}
 	
 	public int getThirdLevelSpells() {
