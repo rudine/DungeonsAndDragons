@@ -68,4 +68,8 @@ public abstract class AbstractFight extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+
+	public int getTurn() {
+		return turn;
+	}
 }
