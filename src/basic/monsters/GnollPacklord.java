@@ -43,7 +43,7 @@ public class GnollPacklord extends Gnoll implements PreparesForNextTurn {
 	private void setSpecialAttacks() {
 		SpecialAttackBuilder InciteBuilder = new SpecialAttackBuilder();
 		SpecialAttack inciteRampage = InciteBuilder.setAreaOfEffect("1 cr. with rampage within 30ft.")//
-				.addDamageComponent(new DamageComponent(0, 8, 0, DamageType.MAGIC)) //TODO, not a perfect fit
+				.addDamageComponent(new DamageComponent(0, 8, 0, DamageType.MAGIC)) //TODO, action van maken?
 				.setSavingThrow(new SavingThrow(0, AbilityTypes.DEX))//
 				.setHalfDamageWhenSaved(false)//
 				.setWeaponName("Incite Rampage")//
