@@ -209,17 +209,17 @@ public abstract class AbstractEnemy {
 		double percentage = getVitalityPercentage();
 		
 		if (getHitpoints() == 1)
-			return "hanging on by a thread";
+			return "bijna dood"; //hanging on by a thread
 		else if (percentage > 0 && percentage <= 25)
-			return "rough";
+			return "toegetakeld"; //rough
 		else if (percentage > 25 && percentage <= 50)
-			return "bloodied";
+			return "bloederig"; //bloodied
 		else if (percentage > 50 && percentage <= 75)
-			return "wounded";
+			return "gewond"; //wounded
 		else if (percentage > 75  && percentage <= 90)
-			return "hurt";
+			return "heeft pijn"; //hurt
 		else if (percentage > 90 && percentage < 100)
-			return "unimpressed";
+			return "niet onder de indruk"; //unimpressed
 		else
 			return "";
 	}
