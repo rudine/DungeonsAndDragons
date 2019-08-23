@@ -1,6 +1,5 @@
 package basic.ruleobjects.magic.spells;
 
-import basic.ruleobjects.DamageType;
 import basic.ruleobjects.magic.CastingTime;
 import basic.ruleobjects.magic.SchoolOfMagic;
 import basic.ruleobjects.magic.Spell;
@@ -17,7 +16,6 @@ public class FalseLife extends Spell implements HealingSpell{
 		setLevel(1);
 		setDurationRounds(1000);
 		setSpellComponents(SpellComponentService.getAllSpellComponents());
-		setDamageType(DamageType.COLD);
 		setSchool(SchoolOfMagic.Necromancy);
 	}
 	

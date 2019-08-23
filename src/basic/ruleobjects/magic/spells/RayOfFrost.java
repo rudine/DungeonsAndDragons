@@ -7,8 +7,10 @@ import basic.ruleobjects.magic.Spell;
 import basic.ruleobjects.magic.SpellComponentService;
 import basic.services.DiceService;
 
-public class RayOfFrost extends Spell implements DamagingSpell {
+public class RayOfFrost extends Spell implements DamagingSpell, RequiresAttackRoll{
 
+	private DamageType damageType;
+	
 	public RayOfFrost() {
 		setCastingTime(CastingTime.ACTION);
 		setName("Ray of frost");
@@ -41,5 +43,20 @@ public class RayOfFrost extends Spell implements DamagingSpell {
 			return DiceService.throwD8(3);
 		else
 			return DiceService.throwD8(4);
+	}
+	
+	@Override
+	public DamageType getDamageType() {
+		return damageType;
+	}
+
+	@Override
+	public void setDamageType(DamageType damageType) {
+		this.damageType = damageType;
+	}
+
+	@Override
+	public int getToHit(int spellAttackModifier) {
+		return DiceService.throwD20(1) + spellAttackModifier;
 	}
 }

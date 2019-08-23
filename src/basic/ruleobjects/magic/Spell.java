@@ -3,8 +3,6 @@ package basic.ruleobjects.magic;
 import java.util.HashSet;
 import java.util.Set;
 
-import basic.ruleobjects.DamageType;
-
 public abstract class Spell {
 	
 	private CastingTime castingTime;
@@ -15,7 +13,6 @@ public abstract class Spell {
 	private boolean concentration = false;
 	private int durationRounds;
 	private int level;
-	private DamageType damageType;
 	private SchoolOfMagic school;
 	
 	public Spell() {
@@ -88,18 +85,10 @@ public abstract class Spell {
 		this.level = level;
 	}
 
-	public DamageType getDamageType() {
-		return damageType;
-	}
-
-	public void setDamageType(DamageType damageType) {
-		this.damageType = damageType;
-	}
-
 	@Override
 	public String toString() {
 		String level = this.level == 0 ? "cantrip" : "" + this.level;
-		return "" + name + " - level: " + level + " CT: " + castingTime;
+		return name + " [" + level + "] - " + castingTime + " - " + range + (concentration ? "- Conc." : "") ;
 	}
 
 	public SchoolOfMagic getSchool() {

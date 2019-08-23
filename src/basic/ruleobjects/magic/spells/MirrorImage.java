@@ -9,7 +9,7 @@ public class MirrorImage extends Spell {
 
 	public MirrorImage() {
 		setCastingTime(CastingTime.ACTION);
-		setName("Darkness");
+		setName("Mirror image");
 		setDescription(createDescription());
 		setRange("Self");
 		setLevel(2);

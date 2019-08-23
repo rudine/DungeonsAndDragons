@@ -7,8 +7,10 @@ import basic.ruleobjects.magic.Spell;
 import basic.ruleobjects.magic.SpellComponentService;
 import basic.services.DiceService;
 
-public class ShockingGrasp extends Spell implements DamagingSpell{
+public class ShockingGrasp extends Spell implements DamagingSpell, RequiresAttackRoll{
 
+	private DamageType damageType;
+	
 	public ShockingGrasp() {
 		setCastingTime(CastingTime.ACTION);
 		setName("Shocking grasp");
@@ -43,4 +45,20 @@ public class ShockingGrasp extends Spell implements DamagingSpell{
 		else
 			return DiceService.throwD8(4);
 	}
+	
+	@Override
+	public DamageType getDamageType() {
+		return damageType;
+	}
+
+	@Override
+	public void setDamageType(DamageType damageType) {
+		this.damageType = damageType;
+	}
+
+	@Override
+	public int getToHit(int spellAttackModifier) {
+		return DiceService.throwD20(1) + spellAttackModifier;
+	}
 }
+
