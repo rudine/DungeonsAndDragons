@@ -1,24 +1,18 @@
 package gui.components;
 
 import basic.monsters.AbstractEnemy;
-import basic.ruleobjects.modifiers.SkillModifier;
 import basic.ruleobjects.AbilityTypes;
+import basic.ruleobjects.modifiers.SkillModifier;
+import basic.services.StringUtil;
+import gui.LayoutService;
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class Statblock<T extends AbstractEnemy> extends GridPane {
 
 	private T enemy;
-	private Font titleFont = Font.font("Mrs Eaves OT", 24);
-	private Font subTitleFont = Font.font("Scala Sans LF", FontPosture.ITALIC, 12);
-	private Font boldFont = Font.font("Scala Sans LF", FontWeight.BOLD, 14);
-	private Font normalFont = Font.font("Scala Sans", 14);
 
 	public Statblock(T enemy) {
 		this.enemy = enemy;
@@ -37,11 +31,10 @@ public class Statblock<T extends AbstractEnemy> extends GridPane {
 		HBox pane = new HBox();
 		pane.setPadding(new Insets(10, 10, 1, 10));
 
-		Text text = new Text(enemy.getClass().getSimpleName().toUpperCase());
-		text.setFont(titleFont);
-		text.setFill(Color.MAROON);
+		Text enemyNameText = new Text(StringUtil.convertCamelCase(enemy.getClass().getSimpleName()));
+		enemyNameText = LayoutService.setEnemyNameTextLayout(enemyNameText);
 
-		pane.getChildren().add(text);
+		pane.getChildren().add(enemyNameText);
 		return pane;
 	}
 
@@ -50,8 +43,7 @@ public class Statblock<T extends AbstractEnemy> extends GridPane {
 		pane.setPadding(new Insets(0, 10, 5, 10));
 
 		Text text = new Text(enemy.getSize() + " " + enemy.getMonsterType() + ", " + enemy.getAlignment());
-		;
-		text.setFont(subTitleFont);
+		text.setFont(LayoutService.getSubtitleFont());
 
 		pane.getChildren().add(text);
 		return pane;
@@ -62,9 +54,9 @@ public class Statblock<T extends AbstractEnemy> extends GridPane {
 		pane.setPadding(new Insets(5, 10, 0, 10));
 
 		Text armorClass = new Text("Armor Class ");
-		armorClass.setFont(boldFont);
+		armorClass.setFont(LayoutService.getBoldFont());
 		Text AC = new Text("" + enemy.getAC());
-		AC.setFont(normalFont);
+		AC.setFont(LayoutService.getNormalFont());
 
 		pane.getChildren().addAll(armorClass, AC);
 		return pane;
@@ -75,9 +67,9 @@ public class Statblock<T extends AbstractEnemy> extends GridPane {
 		pane.setPadding(new Insets(0, 10, 0, 10));
 
 		Text hitpointsHeader = new Text("Hitpoints ");
-		hitpointsHeader.setFont(boldFont);
+		hitpointsHeader.setFont(LayoutService.getBoldFont());
 		Text hitpoints = new Text("" + enemy.getHitpoints());
-		hitpoints.setFont(normalFont);
+		hitpoints.setFont(LayoutService.getNormalFont());
 
 		pane.getChildren().addAll(hitpointsHeader, hitpoints);
 		return pane;
@@ -88,9 +80,9 @@ public class Statblock<T extends AbstractEnemy> extends GridPane {
 		pane.setPadding(new Insets(0, 10, 0, 10));
 
 		Text speedHeader = new Text("Speed ");
-		speedHeader.setFont(boldFont);
+		speedHeader.setFont(LayoutService.getBoldFont());
 		Text speed = new Text("" + enemy.getSpeed());
-		speed.setFont(normalFont);
+		speed.setFont(LayoutService.getNormalFont());
 
 		pane.getChildren().addAll(speedHeader, speed);
 		return pane;
@@ -116,7 +108,7 @@ public class Statblock<T extends AbstractEnemy> extends GridPane {
 		pane.setPadding(new Insets(0, 10, 0, 10));
 
 		Text skillsHeader = new Text("Skills ");
-		skillsHeader.setFont(boldFont);
+		skillsHeader.setFont(LayoutService.getBoldFont());
 		StringBuilder builder = new StringBuilder();
 		for (SkillModifier sm : enemy.getSkills()) {
 			builder.append(sm.toString());
@@ -124,7 +116,7 @@ public class Statblock<T extends AbstractEnemy> extends GridPane {
 		}
 
 		Text skills = new Text(builder.toString());
-		skills.setFont(normalFont);
+		skills.setFont(LayoutService.getNormalFont());
 
 		pane.getChildren().addAll(skillsHeader, skills);
 		return pane;
