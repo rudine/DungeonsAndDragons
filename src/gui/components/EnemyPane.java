@@ -26,7 +26,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class EnemyPane<T extends AbstractEnemy> extends GridPane {
@@ -50,7 +49,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		aliveText = getAliveText();
 		addTitlePane();
 		addDamagePane();
-		addAbilityScorePane();
+		addAbilityScoresPane();
 		refreshAttackPanes(true);
 		addSpecialAbilitiesPane();
 		addOtherActionsPane();
@@ -73,7 +72,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		String enemyName = StringUtil.convertCamelCase(enemy.getClass().getSimpleName());
 		Text name = new Text(enemyName);
 		name.setFont(LayoutService.getTitleFont());
-		name.setFill(Color.MAROON);
+		name.setFill(LayoutService.getMaroon());
 		Text acText = new Text("AC: " + enemy.getAC());
 		titlePane.getChildren().addAll(name, acText, aliveText, hitpointText, idField);
 		add(titlePane, 0, 0);
@@ -95,16 +94,16 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		add(damagePane, 0, 1);
 	}
 
-	private void addAbilityScorePane() {
+	private void addAbilityScoresPane() {
 		HBox pane = new HBox();
 		pane.setPadding(new Insets(5, 10, 5, 10));
 
-		pane.getChildren().add(new StatPane(AbilityTypes.STR, enemy.getAbilityScores().getStrength()));
-		pane.getChildren().add(new StatPane(AbilityTypes.DEX, enemy.getAbilityScores().getDexterity()));
-		pane.getChildren().add(new StatPane(AbilityTypes.CON, enemy.getAbilityScores().getConstitution()));
-		pane.getChildren().add(new StatPane(AbilityTypes.INT, enemy.getAbilityScores().getIntelligence()));
-		pane.getChildren().add(new StatPane(AbilityTypes.WIS, enemy.getAbilityScores().getWisdom()));
-		pane.getChildren().add(new StatPane(AbilityTypes.CHA, enemy.getAbilityScores().getCharisma()));
+		pane.getChildren().add(new AbilityScoreBlock(AbilityTypes.STR, enemy.getAbilityScores().getStrength()));
+		pane.getChildren().add(new AbilityScoreBlock(AbilityTypes.DEX, enemy.getAbilityScores().getDexterity()));
+		pane.getChildren().add(new AbilityScoreBlock(AbilityTypes.CON, enemy.getAbilityScores().getConstitution()));
+		pane.getChildren().add(new AbilityScoreBlock(AbilityTypes.INT, enemy.getAbilityScores().getIntelligence()));
+		pane.getChildren().add(new AbilityScoreBlock(AbilityTypes.WIS, enemy.getAbilityScores().getWisdom()));
+		pane.getChildren().add(new AbilityScoreBlock(AbilityTypes.CHA, enemy.getAbilityScores().getCharisma()));
 
 		add(pane, 0, 2);
 	}
@@ -314,7 +313,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		AttackText text = DamageService.getAttackText(a, enemy.isAdvantageOnAttacks(), enemy.isDisadvantageOnAttacks());
 		Text attackText = new Text(text.getText());
 		if (text.isCritical()) {
-			attackText.setFill(Color.RED);
+			attackText.setFill(LayoutService.getCritical());
 		}
 		texts.add(attackText);
 	}

@@ -1,0 +1,12 @@
+.root{
+	-fx-base: #fdfdee;
+	-fx-accent: #e29b31;
+    -fx-focus-color: #903018;
+    -fx-faint-focus-color: #90301822;
+    -fx-font-family: "Bookman Old Style";
+    -fx-font-size: 10pt;
+}
+
+.button{
+	-fx-font-family: "Scala Sans";
+}

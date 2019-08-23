@@ -64,6 +64,7 @@ public abstract class AbstractFight extends Application {
 	
 	private void setStage(Stage primaryStage) {
 		Scene scene = new Scene(scrollPane);
+		scene.getStylesheets().add(getClass().getResource("test.css").toExternalForm());
 		primaryStage.setTitle(fightTitle);
 		primaryStage.setScene(scene);
 		primaryStage.show();

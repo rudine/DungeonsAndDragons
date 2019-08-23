@@ -92,12 +92,12 @@ public class Statblock<T extends AbstractEnemy> extends GridPane {
 		HBox pane = new HBox();
 		pane.setPadding(new Insets(5, 10, 5, 10));
 
-		pane.getChildren().add(new StatPane(AbilityTypes.STR, enemy.getAbilityScores().getStrength()));
-		pane.getChildren().add(new StatPane(AbilityTypes.DEX, enemy.getAbilityScores().getDexterity()));
-		pane.getChildren().add(new StatPane(AbilityTypes.CON, enemy.getAbilityScores().getConstitution()));
-		pane.getChildren().add(new StatPane(AbilityTypes.INT, enemy.getAbilityScores().getIntelligence()));
-		pane.getChildren().add(new StatPane(AbilityTypes.WIS, enemy.getAbilityScores().getWisdom()));
-		pane.getChildren().add(new StatPane(AbilityTypes.CHA, enemy.getAbilityScores().getCharisma()));
+		pane.getChildren().add(new AbilityScoreBlock(AbilityTypes.STR, enemy.getAbilityScores().getStrength()));
+		pane.getChildren().add(new AbilityScoreBlock(AbilityTypes.DEX, enemy.getAbilityScores().getDexterity()));
+		pane.getChildren().add(new AbilityScoreBlock(AbilityTypes.CON, enemy.getAbilityScores().getConstitution()));
+		pane.getChildren().add(new AbilityScoreBlock(AbilityTypes.INT, enemy.getAbilityScores().getIntelligence()));
+		pane.getChildren().add(new AbilityScoreBlock(AbilityTypes.WIS, enemy.getAbilityScores().getWisdom()));
+		pane.getChildren().add(new AbilityScoreBlock(AbilityTypes.CHA, enemy.getAbilityScores().getCharisma()));
 
 		return pane;
 	}

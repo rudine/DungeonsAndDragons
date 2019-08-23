@@ -18,27 +18,29 @@ public class LayoutService {
 	private static final Font boldFont = Font.font("Scala Sans LF", FontWeight.BOLD, 14);
 	private static final Font normalFont = Font.font("Scala Sans", 14);
 	private static final Font subtitleFont = Font.font("Scala Sans LF", FontPosture.ITALIC, 12);
+	private static final Font titleFont = Font.loadFont("file:resources/fonts/ScalaSans-Caps.otf", 18);
+	private static final Font enemyNameFont = Font.loadFont("file:resources/fonts/MrsEavesSmallCaps SmallCaps Regular.otf", 24);
 
 	public static Insets getDefaultPadding() {
 		return new Insets(10, 10, 10, 10);
 	}
 	
 	public static Font getTitleFont() {
-		return Font.font("Verdana", FontWeight.BOLD, 12);
-	}
-	
-	public static Font getTitleFontNew() {
-		return Font.font("Scala Sans LF", FontWeight.BOLD, FontPosture.ITALIC, 20);
-	}
-	
-	private static Font getMrsEavesSmallCaps() {
-		return Font.loadFont("file:resources/fonts/MrsEavesSmallCaps SmallCaps Regular.otf", 24);
+		return titleFont;
 	}
 	
 	public static Text setEnemyNameTextLayout(Text textToFormat) {
-		textToFormat.setFont(getMrsEavesSmallCaps());
-		textToFormat.setFill(Color.MAROON);
+		textToFormat.setFont(enemyNameFont);
+		textToFormat.setFill(getMaroon());
 		return textToFormat;
+	}
+	
+	public static Color getMaroon() {
+		return Color.web("#58170D");
+	}
+	
+	public static Color getCritical() {
+		return Color.RED;
 	}
 	
 	public static Font getNormalFont() {
