@@ -10,40 +10,49 @@ import basic.services.DamageService;
 import basic.services.DiceService;
 
 public class Gargoyle extends AbstractEnemy {
-	
+
 	public Gargoyle() {
 		setAC(15);
 		setHitpointsOnCreation(DiceService.throwD8(7) + 21);
 		setSpeed("30 ft., fly 60 ft.");
-		setAbilityScores(new AbilityScores(15, 11, 16, 6, 11, 7));
+		setGargoyleAbilityScores();
 		setAttacksOnAttackAction(2);
 		setAttacks();
 		addToSpecialAbilities(SpecialAbility.FalseAppearance);
 	}
-	
+
+	protected void setGargoyleAbilityScores() {
+		setAbilityScores(new AbilityScores(15, 11, 16, 6, 11, 7));
+	}
+
 	@Override
 	protected void setAttacks() {
 		MeleeAttackBuilder biteBuilder = new MeleeAttackBuilder();
+		int strengthModifier = getAbilityScores().getStrengthModifier();
 		MeleeAttack bite = biteBuilder.setWeaponName("Bite")//
-				.setToHit(4)//
-				.addDamageComponent(new DamageComponent(1, 6, 2, DamageType.PIERCING))//
+				.setToHit(2 + strengthModifier)//
+				.addDamageComponent(new DamageComponent(1, getDamageDie(), strengthModifier, DamageType.PIERCING))//
 				.build();
 		addToAvailableAttacks(bite);
 		MeleeAttackBuilder clawBuilder = new MeleeAttackBuilder();
 		MeleeAttack claw = clawBuilder.setWeaponName("Claw")//
-				.setToHit(4)//
-				.addDamageComponent(new DamageComponent(1, 6, 2, DamageType.SLASHING))//
+				.setToHit(2 + strengthModifier)//
+				.addDamageComponent(new DamageComponent(1, getDamageDie(), strengthModifier, DamageType.SLASHING))//
 				.build();
 		addToAvailableAttacks(claw);
 	}
-	
+
+	protected int getDamageDie() {
+		return 6;
+	}
+
 	@Override
 	public void doDamage(int damage, DamageType type) {
-		switch(type) {
+		switch (type) {
 		case BLUDGEONING:
 		case PIERCING:
 		case SLASHING:
-			setHitpoints(DamageService.subtractHalfDamageFromHitpoints(getHitpoints(), damage)); 
+			setHitpoints(DamageService.subtractHalfDamageFromHitpoints(getHitpoints(), damage));
 			break;
 		case POISON:
 			break;
