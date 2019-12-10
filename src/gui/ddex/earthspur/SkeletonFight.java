@@ -22,6 +22,7 @@ public class SkeletonFight extends Application{
 	private GridPane basePane;
 	private int dmInitiative;
 	private ArrayList<EnemyPane<Skeleton>> skeletonPanes;
+	private final int numberOfSkeletons = 2;
 	
 	
 	@Override
@@ -33,7 +34,7 @@ public class SkeletonFight extends Application{
 		skeletons = new ArrayList<>();
 		skeletonPanes = new ArrayList<>();
 		
-		for(int i = 0; i < 6; i++) {
+		for(int i = 0; i < numberOfSkeletons; i++) {
 			Skeleton skeleton = new Skeleton();
 			skeletons.add(skeleton);
 			EnemyPane<Skeleton> skeletonPane = new EnemyPane<>(skeleton);

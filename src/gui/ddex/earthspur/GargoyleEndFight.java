@@ -9,6 +9,7 @@ import basic.monsters.earthspur.GargoylePriest;
 import basic.services.StandardRulesService;
 import gui.components.AbstractFight;
 import gui.components.EnemyPane;
+import gui.components.NewEnemyPane;
 import gui.components.enemyspecific.GargoylePriestPane;
 import javafx.application.Application;
 
@@ -17,7 +18,7 @@ public class GargoyleEndFight extends AbstractFight {
 	List<Gargoyle> gargoyles;
 	List<EarthElemental> elementals;
 	List<GargoylePriestPane> priestPanes;
-	List<EnemyPane<Gargoyle>> gargoylePanes;
+	List<NewEnemyPane<Gargoyle>> gargoylePanes;
 	List<EnemyPane<EarthElemental>> elementalPanes;
 	
 	private int numberOfPriests = 2;
@@ -46,9 +47,8 @@ public class GargoyleEndFight extends AbstractFight {
 		priestPane.clearSpellPane();
 	}
 	
-	private void nextTurnActionsGargoyle(EnemyPane<Gargoyle> gargoylePane) {
+	private void nextTurnActionsGargoyle(NewEnemyPane<Gargoyle> gargoylePane) {
 		gargoylePane.refreshAttackPanes(false);
-		gargoylePane.refreshHeader();
 		gargoylePane.refreshCheckBoxes();
 	}
 	
@@ -80,7 +80,7 @@ public class GargoyleEndFight extends AbstractFight {
 		for (int i = 0 ; i < numberOfGargoyles; i++) {
 			Gargoyle gargoyle = new Gargoyle();
 			gargoyles.add(gargoyle);
-			EnemyPane<Gargoyle> gargoylePane = new EnemyPane<>(gargoyle);
+			NewEnemyPane<Gargoyle> gargoylePane = new NewEnemyPane<>(gargoyle);
 			gargoylePanes.add(gargoylePane);
 			basePane.add(gargoylePane, i + numberOfPriests, 1);
 		}
