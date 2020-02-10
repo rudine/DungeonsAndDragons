@@ -15,7 +15,7 @@ public class EarthElemental extends AbstractEnemy {
 
 	public EarthElemental() {
 		setSize(Size.Large);
-		setAC(17);
+		setArmorClass(17);
 		setHitpointsOnCreation(DiceService.throwD10(12)+60);
 		setSpeed("30 ft. 6v, burrow 30 ft.");
 		setAbilityScores(new AbilityScores(20, 8, 20, 5, 10, 5));

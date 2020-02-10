@@ -28,7 +28,7 @@ public class Yeti extends AbstractEnemy implements DamageTypeCausesDisadvantage,
 	
 	public Yeti() {
 		setAlive(true);
-		setAC(12);
+		setArmorClass(12);
 		setHitpointsOnCreation(DiceService.throwD10(6) + 18);
 		setSpeed("40 ft. 8 vakjes. Climb 40 ft. 8 vakjes");
 		setAbilityScores(new AbilityScores(18, 13, 16, 8, 12, 7));

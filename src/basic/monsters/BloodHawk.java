@@ -16,7 +16,7 @@ public class BloodHawk extends AbstractEnemy{
 	
 	public BloodHawk() {
 		setSize(Size.Small);
-		setAC(12);
+		setArmorClass(12);
 		setHitpointsOnCreation(DiceService.throwD6(2));
 		setSpeed("10ft 2v, 60ft 12v");
 		setAbilityScores(new AbilityScores(6, 14, 10, 3, 14, 5));

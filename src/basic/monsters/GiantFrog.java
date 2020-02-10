@@ -15,7 +15,7 @@ public class GiantFrog extends AbstractEnemy {
 
 	public GiantFrog() {
 		setSize(Size.Medium);
-		setAC(11);
+		setArmorClass(11);
 		setHitpointsOnCreation(DiceService.throwD8(4));
 		setSpeed("Swim 30ft (6v), Walk 30ft (6v)");
 		setAbilityScores(new AbilityScores(12, 13, 11, 2, 10, 3));
@@ -51,7 +51,7 @@ public class GiantFrog extends AbstractEnemy {
 		return "The frog makes one bite attack against a small or smaller target it is grappling. If the attack hits, "
 				+ "the target is swallowed, and the grapple ends. The swallowed target is blinded and restrained, it "
 				+ "has total cover against attacks and other effects outside the frog, and it takes 5 (2d4) acid damage "
-				+ "at the start of each of the frog’s turns. The frog can have only one target swallowed at a time. If "
+				+ "at the start of each of the frogï¿½s turns. The frog can have only one target swallowed at a time. If "
 				+ "the frog dies, a swallowed creature is no longer restrained by it and can escape from the corpse "
 				+ "using 5 feet of movement, exiting prone.";
 	}

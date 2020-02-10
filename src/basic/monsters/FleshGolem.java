@@ -32,7 +32,7 @@ public class FleshGolem extends AbstractEnemy implements DamageTypeCausesDisadva
 	
 	public FleshGolem() {
 		setSize(Size.Large);
-		setAC(11);
+		setArmorClass(11);
 		setHitpointsOnCreation(DiceService.throwD8(11) + 44);
 		setSpeed("30ft. 6v");
 		setAbilityScores(new AbilityScores(19, 9, 18, 6, 10, 5));

@@ -33,7 +33,7 @@ public class Statblock<T extends AbstractEnemy> extends GridPane {
 
 		Text armorClass = new Text("Armor Class ");
 		armorClass.setFont(LayoutService.getBoldFont());
-		Text AC = new Text("" + enemy.getAC());
+		Text AC = new Text("" + enemy.getArmorClass());
 		AC.setFont(LayoutService.getNormalFont());
 
 		pane.getChildren().addAll(armorClass, AC);

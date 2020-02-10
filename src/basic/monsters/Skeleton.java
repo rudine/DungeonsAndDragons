@@ -17,7 +17,7 @@ import basic.ruleobjects.Size;
 public class Skeleton extends AbstractEnemy {
 
 	public Skeleton() {
-		setAC(13);
+		setArmorClass(13);
 		setAlive(true);
 		setAbilityScores(new AbilityScores(10, 14, 15, 6, 8, 5));
 		setHitpointsOnCreation(throwD8(2) + 4);

@@ -13,7 +13,7 @@ import basic.services.DiceService;
 public class Nightmare extends AbstractEnemy {
 	
 	public Nightmare() {
-		setAC(13);
+		setArmorClass(13);
 		setHitpointsOnCreation(DiceService.throwD10(8) + 24);
 		setSpeed("60 ft. 12v, fly 90ft. 18v");
 		setAbilityScores(new AbilityScores(18, 15, 16, 10, 13, 15));

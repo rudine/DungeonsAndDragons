@@ -20,7 +20,7 @@ import basic.ruleobjects.modifiers.SkillModifier;
 public class Medusa extends AbstractEnemy{
 
 	public Medusa() {
-		setAC(15);
+		setArmorClass(15);
 		setHitpointsOnCreation(127);
 		setSpeed("30 ft. 6 vakjes");
 		setAbilityScores(new AbilityScores(10, 15, 16, 12, 13, 15));
@@ -77,16 +77,16 @@ public class Medusa extends AbstractEnemy{
 	}
 	
 	private String getPetrifyingGazeText() {
-		return "When a creature that can see the medusa’s eyes starts its turn within 30 feet\r\n"
+		return "When a creature that can see the medusaï¿½s eyes starts its turn within 30 feet\r\n"
 				+ " of the medusa, the medusa can force it to make a DC 14 Constitution saving throw\r\n"
-				+ " if the medusa isn’t incapacitated and can see the creature. If the saving throw\r\n"
+				+ " if the medusa isnï¿½t incapacitated and can see the creature. If the saving throw\r\n"
 				+ " fails by 5 or more, the creature is instantly petrified. Otherwise, a creature\r\n"
 				+ " that fails the save begins to turn to stone and is restrained. The restrained creature\r\n"
 				+ " must repeat the saving throw at the end of its next turn, becoming petrified on a\r\n"
 				+ " failure or ending the effect on a success. The petrification lasts until the\r\n "
 				+ " creature is freed by the greater restoration spell or other magic.\r\n"
 				+ " Unless surprised, a creature can avert its eyes to avoid the saving throw at.\r\n"
-				+ " the start of its turn. If the creature does so, it can’t see the medusa until.\r\n"
+				+ " the start of its turn. If the creature does so, it canï¿½t see the medusa until.\r\n"
 				+ " the start of its next turn, when it can avert its eyes again. If the creature.\r\n"
 				+ " looks at the medusa in the meantime, it must immediately make the save. If the.\r\n"
 				+ " medusa sees itself reflected on a polished surface within 30 feet of it and in.\r\n"

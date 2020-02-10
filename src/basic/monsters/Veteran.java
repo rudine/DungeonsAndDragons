@@ -19,7 +19,7 @@ public class Veteran extends AbstractEnemy {
 	
 	public Veteran() {
 		setAlive(true);
-		setAC(17);
+		setArmorClass(17);
 		setHitpointsOnCreation(DiceService.throwD8(9) + 18);
 		setSpeed("30 feet, 6 vakjes");
 		setAbilityScores(new AbilityScores(16, 13, 14, 10, 11, 10));

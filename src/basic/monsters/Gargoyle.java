@@ -12,7 +12,7 @@ import basic.services.DiceService;
 public class Gargoyle extends AbstractEnemy {
 
 	public Gargoyle() {
-		setAC(15);
+		setArmorClass(15);
 		setHitpointsOnCreation(DiceService.throwD8(7) + 21);
 		setSpeed("30 ft., fly 60 ft.");
 		setGargoyleAbilityScores();

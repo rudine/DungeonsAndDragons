@@ -73,7 +73,7 @@ public class EnemyPane<T extends AbstractEnemy> extends GridPane {
 		Text name = new Text(enemyName);
 		name.setFont(LayoutService.getTitleFont());
 		name.setFill(LayoutService.getMaroon());
-		Text acText = new Text("AC: " + enemy.getAC());
+		Text acText = new Text("AC: " + enemy.getArmorClass());
 		titlePane.getChildren().addAll(name, acText, aliveText, hitpointText, idField);
 		add(titlePane, 0, 0);
 	}

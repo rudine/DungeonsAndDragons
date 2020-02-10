@@ -12,7 +12,7 @@ public class GnollFangOfYeenoghu extends Gnoll {
 	public GnollFangOfYeenoghu() {
 		setHitpointsOnCreation(DiceService.throwD8(10) + 20);
 		setAbilityScores(new AbilityScores(17, 15, 15, 10, 11, 13));
-		setAC(14);
+		setArmorClass(14);
 		getAvailableAttacks().clear();
 		setAttacks();
 		setAttacksOnAttackAction(3);

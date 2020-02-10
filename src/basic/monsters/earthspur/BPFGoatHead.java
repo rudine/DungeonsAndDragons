@@ -21,7 +21,7 @@ public class BPFGoatHead extends AbstractEnemy{
 
 	public BPFGoatHead() {
 		setAlive(true);
-		setAC(15);
+		setArmorClass(15);
 		setHitpointsOnCreation(DiceService.throwD8(9) + 18);
 		setSpeed("30 feet, 6 vakjes");
 		setAbilityScores(new AbilityScores(16, 16, 14, 10, 12, 15));

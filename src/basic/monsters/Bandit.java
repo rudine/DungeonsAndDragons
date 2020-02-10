@@ -12,7 +12,7 @@ import basic.services.DiceService;
 public class Bandit extends AbstractEnemy {
 
 	public Bandit() {
-		setAC(12);
+		setArmorClass(12);
 		setHitpointsOnCreation(DiceService.throwD8(2) + 2);
 		setSpeed("30ft. 6 vakjes");
 		setAbilityScores(new AbilityScores(11, 12, 12, 10, 10, 10));

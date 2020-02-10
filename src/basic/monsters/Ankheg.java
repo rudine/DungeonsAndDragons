@@ -16,7 +16,7 @@ import basic.services.DiceService;
 public class Ankheg extends AbstractEnemy implements PreparesForNextTurn{
 
 	public Ankheg() {
-		setAC(14);
+		setArmorClass(14);
 		setHitpointsOnCreation(DiceService.throwD10(6) + 6);
 		setSpeed("30 ft. burrow 10 ft.");
 		setAbilityScores(new AbilityScores(17, 11, 13, 1, 13, 6));

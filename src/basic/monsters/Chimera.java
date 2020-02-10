@@ -19,7 +19,7 @@ public class Chimera extends AbstractEnemy implements PreparesForNextTurn{
 	
 	public Chimera() {
 		setAlive(true);
-		setAC(14);
+		setArmorClass(14);
 		setHitpointsOnCreation(DiceService.throwD10(12) + 48);
 		setSpeed("30 feet, 6 vakjes. Fly 60 ft, 12 vakjes");
 		setAbilityScores(new AbilityScores(19, 11, 19, 3, 14, 10));
@@ -70,7 +70,7 @@ public class Chimera extends AbstractEnemy implements PreparesForNextTurn{
 	}
 	
 	private String getFireBreathText() {
-		return "Fire Breath (Recharge 5–6). The dragon head exhales fire in a 15-foot cone."
+		return "Fire Breath (Recharge 5ï¿½6). The dragon head exhales fire in a 15-foot cone."
 				+ " Each creature in that area must make a DC 15 Dexterity saving throw,"
 				+ " taking 31 (7d8) fire damage on a failed save, or half as much damage"
 				+ " on a successful one.";

@@ -11,7 +11,7 @@ import basic.services.DiceService;
 public class GiantBadger extends AbstractEnemy {
 
 	public GiantBadger() {
-		setAC(10);
+		setArmorClass(10);
 		setHitpointsOnCreation(DiceService.throwD8(2) + 4);
 		setSpeed("30 ft. , burrow 10 ft.");
 		setAbilityScores(new AbilityScores(13, 10, 15, 2, 12, 5));

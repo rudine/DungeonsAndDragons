@@ -24,7 +24,7 @@ public abstract class AbstractEnemy {
 	private int hitpoints;
 	private int hitpointsAtCreation;
 	private boolean alive = true;
-	private int AC;
+	private int armorClass;
 	private String speed;
 	private AbilityScores abilityScores;
 	private Set<SpecialAbility> specialAbilities = new HashSet<>();
@@ -91,12 +91,12 @@ public abstract class AbstractEnemy {
 		this.alive = alive;
 	}
 
-	public int getAC() {
-		return AC;
+	public int getArmorClass() {
+		return armorClass;
 	}
 
-	public void setAC(int aC) {
-		AC = aC;
+	public void setArmorClass(int armorClass) {
+		this.armorClass = armorClass;
 	}
 
 	public String getSpeed() {

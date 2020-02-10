@@ -16,7 +16,7 @@ public class Bullywug extends AbstractEnemy {
 
 	public Bullywug() {
 		setSize(Size.Medium);
-		setAC(15);
+		setArmorClass(15);
 		setHitpointsOnCreation(DiceService.throwD8(2) + 2);
 		setSpeed("Swim 40ft (8v), Walk 20ft (4v)");
 		setAbilityScores(new AbilityScores(12, 12, 13, 7, 10, 7));

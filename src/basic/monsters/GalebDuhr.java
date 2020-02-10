@@ -17,7 +17,7 @@ public class GalebDuhr extends AbstractEnemy {
 
 	public GalebDuhr() {
 		setSize(Size.Medium);
-		setAC(16);
+		setArmorClass(16);
 		setHitpointsOnCreation(DiceService.throwD8(9)+45);
 		setSpeed("15 ft. walking, 30 ft. rolling (60 ft. downhill)");
 		setAbilityScores(new AbilityScores(20, 14, 20, 11, 12, 11));

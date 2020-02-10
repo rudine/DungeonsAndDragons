@@ -13,7 +13,7 @@ public class AudriciaRoaringhorn extends Thug implements PreparesForNextTurn{
 	
 	public AudriciaRoaringhorn() {
 		super();
-		setAC(getAC() + 2);
+		setArmorClass(getArmorClass() + 2);
 	}
 
 	@Override
