@@ -15,6 +15,7 @@ dependency-reduced-pom.xml
 Thumbs.db
 .thumbcache
 .idea/
+out/
 *.iml
 *.tern-project
 .sass-cache
