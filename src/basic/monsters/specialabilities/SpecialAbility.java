@@ -9,6 +9,7 @@ public enum SpecialAbility {
 	ConferFireResistance("Confer fire resistance", "The enemy can grant resistance to fire damage to anyone riding it"),
 	CorrosiveForm("Corrosive Form", "A creature that touches this enemy or hits it with a melee attack while within 5ft of it takes 4(1d8) ACID dmg. Any non magical weapon made of wood or metal that hits it corrodes. After dealing damage, the weapon takes a permanent and cumulative -1 penalty to damage rolls. "
 			+ "If its penalty drops to -5 the weapon is destroyed. Nonmagical ammunition made of metal or wood that hits this enemy is destoryed after dealing damage. This enemy can eat through 2-inch-thick, nonmagical wood or metal in 1 round."),
+	CunningAction("Cunning action", "On each of its turns, the enemy can use a bonus action to take the Dash, Disengage, or Hide action."),
 	DeathBurst("Death burst", "See enemy"),
 	EarthGlide("Earth Glide", "This enemy can burrow through nonmagical, unworked earth and stone. While doing so it doesn't disturb the material it moves through."),
 	FalseAppearance("False appearance", "While the enemy remains motionless, it is indistinguishable from items that look like it in it's surroundings"),
@@ -27,6 +28,7 @@ public enum SpecialAbility {
 	RollingCharge("Rolling Charge", "If this enemy rolls at least 20 ft straight toward a target and then hits it with a slam attack on the same turn, the target takes and extra 7 (2d6) bludgeoning damage. If the target is a creature, it must succeed on a DC 16 strength saving throuw or be knocked prone."),
 	RunningLeap("Running Leap", "With a 10-foot running start, the enemy can long jump up to 25 feet."),
 	SiegeMonster("Siege monster", "This enemy deals double damage to objects and structures."),
+	SneakAttack("Sneak attack (1/turn)", "The enemy deals an extra 7 (2d6) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5ft. of an ally of the enemy that isn’t incapacitated and the enemy doesn’t have disadvantage on the attack roll."),
 	SnowCamouflage("Snow Camouflage", "Has advantage on Dexterity(Stealth) checks made to hide in snowy terrain."),
 	SpeakFrogToad("Speak with Frogs and Toads", "This enemy can communicate simple concepts to frogs and toads when in speaks in it's language"),
 	SpiderClimb("Spider Climb", "Can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."),
@@ -38,7 +40,7 @@ public enum SpecialAbility {
 
 	private String description;
 
-	private SpecialAbility(String name, String description) {
+	SpecialAbility(String name, String description) {
 		this.name = name;
 		this.description = description;
 	}
