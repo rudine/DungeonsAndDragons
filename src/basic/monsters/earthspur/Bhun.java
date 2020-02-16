@@ -29,7 +29,7 @@ public class Bhun extends AbstractEnemy {
 		setAttacks();
 		setAttacksOnAttackAction(2);
 		addToSaveModifiers(new SaveModifier(STR, 5), new SaveModifier(DEX, 5));
-		addToSkills(new SkillModifier(6, Athletics, STR), new SkillModifier(4, Intimidation, CHA));
+		addToSkills(new SkillModifier(6, Athletics), new SkillModifier(4, Intimidation));
 	}
 	
 	@Override

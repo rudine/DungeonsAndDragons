@@ -26,7 +26,7 @@ public class Behir extends AbstractEnemy implements PreparesForNextTurn {
 		setAttacksOnAttackAction(2);
 		setSpecialAttacks();
 		setSpecialAttacksOnAction(1);
-		addToSkills(new SkillModifier(6, Skill.Perception, AbilityTypes.DEX), new SkillModifier(7, Skill.Stealth, AbilityTypes.DEX));
+		addToSkills(new SkillModifier(6, Skill.Perception), new SkillModifier(7, Skill.Stealth));
 	}
 
 	@Override
@@ -101,6 +101,6 @@ public class Behir extends AbstractEnemy implements PreparesForNextTurn {
 
 	@Override
 	public void prepareForNextTurn() {
-		specialAttacks.stream().filter(a -> a.hasRecharge()).forEach(a -> a.recharge());
+		specialAttacks.stream().filter(SpecialAttack::hasRecharge).forEach(SpecialAttack::recharge);
 	}
 }

@@ -8,6 +8,7 @@ import basic.attack.types.MeleeAttack;
 import basic.attack.types.RangedAttack;
 import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.attack.types.builders.RangedAttackBuilder;
+import basic.monsters.specialabilities.SpecialAbility;
 import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.Alignment;
 import basic.ruleobjects.DamageType;
@@ -17,15 +18,15 @@ import basic.services.DiceService;
 public class Thug extends AbstractEnemy {
 	
 	public Thug() {
-		setAlive(true);
 		setArmorClass(11);
 		setHitpointsOnCreation(DiceService.throwD8(5) + 10);
 		setSpeed("30 feet, 6 vakjes");
 		setAbilityScores(new AbilityScores(15, 11, 14, 10, 10, 11));
 		setAttacks();
 		setAttacksOnAttackAction(2);
-		addToSkills(new SkillModifier(2, Intimidation, CHA));
+		addToSkills(new SkillModifier(2, Intimidation));
 		setAlignment(Alignment.AnyNonGood);
+		addToSpecialAbilities(SpecialAbility.PackTactics);
 	}
 	
 	protected void setAttacks() {

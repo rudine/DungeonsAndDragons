@@ -37,7 +37,7 @@ public class BPFDragonhead extends AbstractEnemy implements PreparesForNextTurn{
 		setAttacksOnAttackAction(2);
 		setSpecialAttacksOnAction(1);
 		addToSaveModifiers(new SaveModifier(STR, 5), new SaveModifier(DEX, 5));
-		addToSkills(new SkillModifier(5, Athletics, STR), new SkillModifier(4, Intimidation, CHA));
+		addToSkills(new SkillModifier(5, Athletics), new SkillModifier(4, Intimidation));
 	}
 	
 	@Override
@@ -69,7 +69,7 @@ public class BPFDragonhead extends AbstractEnemy implements PreparesForNextTurn{
 
 	@Override
 	public void prepareForNextTurn() {
-		specialAttacks.stream().filter(a -> a.hasRecharge()).forEach(a -> a.recharge());
+		specialAttacks.stream().filter(SpecialAttack::hasRecharge).forEach(SpecialAttack::recharge);
 	}
 
 	private String getBlowFireText() {

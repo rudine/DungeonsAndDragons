@@ -11,14 +11,14 @@ import basic.services.DiceService;
 
 public class SmokeMephit extends Mephit {
 
-    public SmokeMephit(){
+    public SmokeMephit() {
         setArmorClass(12);
-        setHitpointsOnCreation(DiceService.throwD6(5)+5);
+        setHitpointsOnCreation(DiceService.throwD6(5) + 5);
         setSpeed("30ft., 30ft. fly (6 vakjes)");
-        setAbilityScores(new AbilityScores(6,14,12,10,10,11));
+        setAbilityScores(new AbilityScores(6, 14, 12, 10, 10, 11));
         setAttacks();
         setSpecialAttack();
-        addToSkills(new SkillModifier(2, Skill.Perception, AbilityTypes.WIS), new SkillModifier(4, Skill.Stealth, AbilityTypes.DEX));
+        addToSkills(new SkillModifier(2, Skill.Perception), new SkillModifier(4, Skill.Stealth));
     }
 
     @Override
@@ -48,23 +48,23 @@ public class SmokeMephit extends Mephit {
     protected void setAttacks() {
         MeleeAttackBuilder meleeBuilder = new MeleeAttackBuilder();
         MeleeAttack claws = meleeBuilder.setWeaponName("Claws")//
-                        .setToHit(4)//
-                        .addDamageComponent(new DamageComponent(1,4,2, DamageType.SLASHING))//
-                        .build();
+                .setToHit(4)//
+                .addDamageComponent(new DamageComponent(1, 4, 2, DamageType.SLASHING))//
+                .build();
         addToAvailableAttacks(claws);
     }
 
-    private void setSpecialAttack(){
+    private void setSpecialAttack() {
         SpecialAttackBuilder attackBuilder = new SpecialAttackBuilder();
         SpecialAttack cinderBreath = attackBuilder.setAreaOfEffect("15ft cone")//
-                        .setSavingThrow(new SavingThrow(10, AbilityTypes.DEX))//
-                        .setWeaponName(getBreathWeaponTitle())//
-                        .setDescription(getBreathWeaponDescription())//
-                        .setRecharge(true)//
-                        .setAvailable(true)//
-                        .setAvailabilityDie(breathWeaponRechargeOn)//
-                        .setSuccesRange(succesRange)//
-                        .build();
+                .setSavingThrow(new SavingThrow(10, AbilityTypes.DEX))//
+                .setWeaponName(getBreathWeaponTitle())//
+                .setDescription(getBreathWeaponDescription())//
+                .setRecharge(true)//
+                .setAvailable(true)//
+                .setAvailabilityDie(breathWeaponRechargeOn)//
+                .setSuccesRange(succesRange)//
+                .build();
         addToSpecialAttacks(cinderBreath);
     }
 }

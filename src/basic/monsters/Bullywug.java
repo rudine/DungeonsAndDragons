@@ -20,7 +20,7 @@ public class Bullywug extends AbstractEnemy {
 		setHitpointsOnCreation(DiceService.throwD8(2) + 2);
 		setSpeed("Swim 40ft (8v), Walk 20ft (4v)");
 		setAbilityScores(new AbilityScores(12, 12, 13, 7, 10, 7));
-		addToSkills(new SkillModifier(3, Skill.Stealth, AbilityTypes.DEX));
+		addToSkills(new SkillModifier(3, Skill.Stealth));
 		addToSpecialAbilities(SpecialAbility.Amphibious, SpecialAbility.SpeakFrogToad, SpecialAbility.SwampCamouflage, SpecialAbility.StandingLeapLong20High10);
 		setAttacks();
 		setAttacksOnAttackAction(1); // TODO klopt niet helemaal, er zijn wel 2 attacks, maar die met de spear is met 2 handen of met 1 hand

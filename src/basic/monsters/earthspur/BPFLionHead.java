@@ -29,7 +29,7 @@ public class BPFLionHead extends AbstractEnemy {
 		setAttacks();
 		setAttacksOnAttackAction(4);
 		addToSaveModifiers(new SaveModifier(STR, 5), new SaveModifier(DEX, 5));
-		addToSkills(new SkillModifier(5, Athletics, STR), new SkillModifier(4, Intimidation, CHA));
+		addToSkills(new SkillModifier(5, Athletics), new SkillModifier(4, Intimidation));
 	}
 	
 	@Override

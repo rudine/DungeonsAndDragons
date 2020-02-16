@@ -1,9 +1,5 @@
 package basic.monsters;
 
-import static basic.monsters.specialabilities.SpecialAbility.FearOfFire;
-import static basic.monsters.specialabilities.SpecialAbility.KeenSmell;
-import static basic.monsters.specialabilities.SpecialAbility.SnowCamouflage;
-
 import basic.attack.DamageComponent;
 import basic.attack.types.MeleeAttack;
 import basic.attack.types.SpecialAttack;
@@ -11,16 +7,11 @@ import basic.attack.types.builders.MeleeAttackBuilder;
 import basic.attack.types.builders.SpecialAttackBuilder;
 import basic.monsters.interfaces.DamageTypeCausesDisadvantage;
 import basic.monsters.interfaces.PreparesForNextTurn;
-import basic.ruleobjects.AbilityScores;
-import basic.ruleobjects.AbilityTypes;
-import basic.ruleobjects.Alignment;
-import basic.ruleobjects.DamageType;
-import basic.ruleobjects.MonsterType;
-import basic.ruleobjects.SavingThrow;
-import basic.ruleobjects.Size;
-import basic.ruleobjects.Skill;
+import basic.ruleobjects.*;
 import basic.ruleobjects.modifiers.SkillModifier;
 import basic.services.DiceService;
+
+import static basic.monsters.specialabilities.SpecialAbility.*;
 
 public class Yeti extends AbstractEnemy implements DamageTypeCausesDisadvantage, PreparesForNextTurn {
 
@@ -32,7 +23,7 @@ public class Yeti extends AbstractEnemy implements DamageTypeCausesDisadvantage,
 		setHitpointsOnCreation(DiceService.throwD10(6) + 18);
 		setSpeed("40 ft. 8 vakjes. Climb 40 ft. 8 vakjes");
 		setAbilityScores(new AbilityScores(18, 13, 16, 8, 12, 7));
-		addToSkills(new SkillModifier(3, Skill.Perception, AbilityTypes.WIS));
+		addToSkills(new SkillModifier(3, Skill.Perception));
 		// TODO vunarabilities should be a seperate type of ability of the enemy
 		// move Fear of fire over to vunerabilities
 		addToSpecialAbilities(KeenSmell, FearOfFire, SnowCamouflage);

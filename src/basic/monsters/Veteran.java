@@ -1,10 +1,5 @@
 package basic.monsters;
 
-import static basic.ruleobjects.AbilityTypes.STR;
-import static basic.ruleobjects.AbilityTypes.WIS;
-import static basic.ruleobjects.Skill.Athletics;
-import static basic.ruleobjects.Skill.Perception;
-
 import basic.attack.DamageComponent;
 import basic.attack.types.MeleeAttack;
 import basic.attack.types.RangedAttack;
@@ -14,6 +9,9 @@ import basic.ruleobjects.AbilityScores;
 import basic.ruleobjects.DamageType;
 import basic.ruleobjects.modifiers.SkillModifier;
 import basic.services.DiceService;
+
+import static basic.ruleobjects.Skill.Athletics;
+import static basic.ruleobjects.Skill.Perception;
 
 public class Veteran extends AbstractEnemy {
 	
@@ -25,7 +23,7 @@ public class Veteran extends AbstractEnemy {
 		setAbilityScores(new AbilityScores(16, 13, 14, 10, 11, 10));
 		setAttacks();
 		setAttacksOnAttackAction(2);
-		addToSkills(new SkillModifier(5, Athletics, STR), new SkillModifier(2, Perception, WIS));
+		addToSkills(new SkillModifier(5, Athletics), new SkillModifier(2, Perception));
 	}
 	
 	protected void setAttacks() {
